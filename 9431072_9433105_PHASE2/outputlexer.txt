@@ -1,0 +1,17 @@
+Program	0
+
+var	1
+
+integerId	2
+
+_main	3
+
+boolean	4
+
+var_2	5
+
+_func	6
+
+i	7
+
+j	8

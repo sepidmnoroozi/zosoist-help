@@ -1,0 +1,8 @@
+class Program{
+    int a, b , var;
+    static void _main(){
+        a = 3;
+        b = 4 * a;
+        var = a/(-b + 32 << 2);
+    }
+}

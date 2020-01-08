@@ -1,0 +1,176 @@
+macros ->/* Lambda */
+classes ->/* Lambda */
+symbol_decs ->/* Lambda */
+return_type -> INT_TYPE
+var_type -> return_type
+var_list_item -> ID
+var_list -> var_list_item
+exp -> INTEGER
+item1 -> ID ASSIGNMENT exp
+var_list_item -> item1
+var_list -> var_list COMMA var_list_item
+var_dec -> var_type var_list SEMICOLON
+symbol_dec -> var_dec
+symbol_decs -> symbol_decs symbol_dec
+formal_arguments ->/* Lambda */
+statements_list ->/* Lambda */
+lvalue1 -> ID
+lvalue -> lvalue1
+exp -> INTEGER
+unary_operation -> SUBTRACTION exp
+exp -> unary_operation
+exp -> INTEGER
+binary_operation -> exp SUBTRACTION exp
+exp -> binary_operation
+assignment -> lvalue ASSIGNMENT exp SEMICOLON
+statement -> assignment
+statements_list -> statements_list statement
+print -> PRINT LP STRING RP SEMICOLON
+statement -> print
+statements_list -> statements_list statement
+block -> LCB statements_list RCB
+func_body -> ID LP formal_arguments RP block
+func_dec -> STATIC VOID func_body
+symbol_dec -> func_dec
+symbol_decs -> symbol_decs symbol_dec
+return_type -> BOOL_TYPE
+var_type -> return_type
+formal_arguments ->/* Lambda */
+statements_list ->/* Lambda */
+lvalue1 -> ID
+lvalue -> lvalue1
+exp -> lvalue
+exp -> INTEGER
+comparison_operation -> exp LT exp
+exp -> comparison_operation
+exp -> INTEGER
+lvalue1 -> ID
+lvalue -> lvalue1
+exp -> lvalue
+binary_operation -> exp SUBTRACTION exp
+exp -> binary_operation
+lvalue1 -> ID
+lvalue -> lvalue1
+exp -> lvalue
+comparison_operation -> exp GT exp
+exp -> comparison_operation
+logical_operation -> exp AND exp
+exp -> logical_operation
+statements_list ->/* Lambda */
+lvalue1 -> ID
+lvalue -> lvalue1
+lvalue1 -> ID
+lvalue -> lvalue1
+exp -> lvalue
+lvalue1 -> ID
+lvalue -> lvalue1
+exp -> lvalue
+exp -> INTEGER
+binary_operation -> exp SUBTRACTION exp
+exp -> binary_operation
+exp -> LP exp RP
+bitwise_operation -> exp BITWISE_OR exp
+exp -> bitwise_operation
+assignment -> lvalue ASSIGNMENT exp SEMICOLON
+statement -> assignment
+statements_list -> statements_list statement
+lvalue1 -> ID
+lvalue -> lvalue1
+lvalue1 -> ID
+lvalue -> lvalue1
+exp -> lvalue
+exp -> INTEGER
+bitwise_operation -> exp BITWISE_AND exp
+exp -> bitwise_operation
+assignment -> lvalue ASSIGNMENT exp SEMICOLON
+statement -> assignment
+statements_list -> statements_list statement
+exp -> TRUE
+statements_list ->/* Lambda */
+lvalue1 -> ID
+lvalue -> lvalue1
+exp -> INTEGER
+assignment -> lvalue ASSIGNMENT exp SEMICOLON
+statement -> assignment
+statements_list -> statements_list statement
+break -> BREAK SEMICOLON
+statement -> break
+statements_list -> statements_list statement
+block -> LCB statements_list RCB
+while -> WHILE LP exp RP block
+statement -> while
+statements_list -> statements_list statement
+block -> LCB statements_list RCB
+lvalue1 -> ID
+lvalue -> lvalue1
+exp -> lvalue
+exp -> INTEGER
+comparison_operation -> exp GT exp
+exp -> comparison_operation
+statements_list ->/* Lambda */
+lvalue1 -> ID
+lvalue -> lvalue1
+lvalue1 -> ID
+lvalue -> lvalue1
+exp -> lvalue
+exp -> INTEGER
+bitwise_operation -> exp BITWISE_AND exp
+exp -> bitwise_operation
+assignment -> lvalue ASSIGNMENT exp SEMICOLON
+statement -> assignment
+statements_list -> statements_list statement
+block -> LCB statements_list RCB
+elseif -> ELSEIF LP exp RP block
+elseifs -> elseif
+lvalue1 -> ID
+lvalue -> lvalue1
+lvalue1 -> ID
+lvalue -> lvalue1
+exp -> lvalue
+exp -> INTEGER
+bitwise_operation -> exp BITWISE_AND exp
+exp -> bitwise_operation
+assignment -> lvalue ASSIGNMENT exp SEMICOLON
+statement -> assignment
+block -> statement
+if -> IF LP exp RP block elseifs ELSE block
+statement -> if
+statements_list -> statements_list statement
+block -> LCB statements_list RCB
+func_body -> ID LP formal_arguments RP block
+func_dec -> var_type func_body
+symbol_dec -> func_dec
+symbol_decs -> symbol_decs symbol_dec
+return_type -> REAL_TYPE
+var_type -> return_type
+return_type -> INT_TYPE
+formal_argument -> return_type ID
+formal_arguments_list -> formal_argument
+return_type -> INT_TYPE
+formal_argument -> return_type ID
+formal_arguments_list -> formal_arguments_list COMMA formal_argument
+formal_arguments -> formal_arguments_list
+statements_list ->/* Lambda */
+lvalue1 -> ID
+lvalue -> lvalue1
+exp -> lvalue
+lvalue1 -> ID
+lvalue -> lvalue1
+exp -> lvalue
+binary_operation -> exp MODULO exp
+exp -> binary_operation
+exp -> REAL
+binary_operation -> exp MULTIPLICATION exp
+exp -> binary_operation
+return -> RETURN exp SEMICOLON
+statement -> return
+statements_list -> statements_list statement
+block -> LCB statements_list RCB
+func_body -> ID LP formal_arguments RP block
+func_dec -> var_type func_body
+symbol_dec -> func_dec
+symbol_decs -> symbol_decs symbol_dec
+class -> CLASS ID LCB symbol_decs RCB
+classes -> classes class
+program -> macros classes
+
