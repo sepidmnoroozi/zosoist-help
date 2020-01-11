@@ -3,11 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="0fce5a13-b387-4fb2-966b-bb1f4d59c33e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/code_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/code_generator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/9431072_9433105_PHASE2/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/9431072_9433105_PHASE2/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/9431072_9433105_PHASE2/test" beforeDir="false" afterPath="$PROJECT_DIR$/9431072_9433105_PHASE2/test" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classes/nonterminal.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/nonterminal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/parser.out" beforeDir="false" afterPath="$PROJECT_DIR$/classes/parser.out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classes/parser_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/parser_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/parsetab.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/parsetab.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/outputlexer.txt" beforeDir="false" afterPath="$PROJECT_DIR$/outputlexer.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zosoist" beforeDir="false" afterPath="$PROJECT_DIR$/zosoist" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,7 +39,7 @@
     <session id="921088324">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="22" />
+          <entry key="project.closed" value="23" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="5" />
           <entry key="project.open.time.10" value="2" />
@@ -53,30 +55,30 @@
         <counts>
           <entry key="mainInput" value="1" />
           <entry key="out" value="1" />
-          <entry key="py" value="43" />
-          <entry key="test" value="3" />
+          <entry key="py" value="49" />
+          <entry key="test" value="5" />
           <entry key="txt" value="34" />
-          <entry key="zosoist" value="1" />
+          <entry key="zosoist" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="PLAIN_TEXT" value="40" />
-          <entry key="Python" value="43" />
+          <entry key="PLAIN_TEXT" value="43" />
+          <entry key="Python" value="49" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="9959" />
-          <entry key="test" value="183" />
+          <entry key="py" value="10373" />
+          <entry key="test" value="187" />
           <entry key="txt" value="510" />
-          <entry key="zosoist" value="413" />
+          <entry key="zosoist" value="494" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="1106" />
-          <entry key="Python" value="9959" />
+          <entry key="PLAIN_TEXT" value="1191" />
+          <entry key="Python" value="10373" />
         </counts>
       </usages-collector>
     </session>
@@ -89,31 +91,28 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="3" column="21" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/zosoist">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="40" lean-forward="true" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
+            <state relative-caret-position="15">
+              <caret line="1" column="24" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/zosoist">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/classes/nonterminal.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+            <state relative-caret-position="225">
+              <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
               <folding>
-                <marker date="1578656984403" expanded="true" signature="19:24" ph="..." />
+                <marker date="1578738227703" expanded="true" signature="19:24" ph="..." />
               </folding>
             </state>
           </provider>
@@ -122,34 +121,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/classes/parser_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="511" column="47" lean-forward="true" selection-start-line="511" selection-start-column="47" selection-end-line="511" selection-end-column="47" />
+            <state relative-caret-position="215">
+              <caret line="320" column="39" lean-forward="true" selection-start-line="320" selection-start-column="39" selection-end-line="320" selection-end-column="39" />
               <folding>
-                <element signature="e#0#23#0" expanded="true" />
-                <marker date="1578668807967" expanded="true" signature="20039:20044" ph="..." />
-                <marker date="1578668807967" expanded="true" signature="20339:20643" ph="..." />
-                <marker date="1578668807967" expanded="true" signature="20638:20643" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="36" lean-forward="true" selection-start-line="1" selection-start-column="36" selection-end-line="1" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/classes/lexer.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="292" column="13" selection-start-line="292" selection-start-column="10" selection-end-line="292" selection-end-column="13" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
+                <element signature="e#0#48#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -179,36 +154,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>haha</find>
-      <find>ass</find>
-      <find>new_lab</find>
-      <find>comparison_operation</find>
-      <find>code_gen</find>
-      <find>OR</find>
-      <find>back</find>
-      <find>logical</find>
-      <find>self.code_generator.generate_arithmetic_code(p, self.new_temp())</find>
-      <find>code</find>
-      <find>exp : lva</find>
-      <find>RP</find>
-      <find>.m</find>
-      <find>exp -&gt; lvalue</find>
-      <find>AND</find>
-      <find>p</find>
-      <find>NOT</find>
-      <find>ID</find>
-      <find>FALSE</find>
-      <find>str</find>
-      <find>lvalue</find>
-      <find>backpa</find>
-      <find>assign</find>
-      <find>TRUE</find>
-      <find>assi</find>
-      <find>&quot;:</find>
       <find>append</find>
       <find>532</find>
       <find>BIT</find>
       <find>LT</find>
+      <find>IF</find>
+      <find>statement</find>
+      <find>while</find>
+      <find>RCB</find>
+      <find>p_statement_4</find>
+      <find>p_statement_5</find>
+      <find>p_assignment</find>
+      <find>p_lvalue_1</find>
+      <find>p_lval1</find>
+      <find>p_if_1</find>
+      <find>p_exp</find>
+      <find>p_exp_1</find>
+      <find>p_exp_1(</find>
+      <find>p_exp_2(</find>
+      <find>p_exp_3(</find>
+      <find>p_exp_5(</find>
+      <find>p_exp_10(</find>
+      <find>p_binary_operation(</find>
+      <find>p_logical_operation</find>
+      <find>p_logical_operation_1</find>
+      <find>p_comparison_operation_1</find>
+      <find>p_bitwise_operation_1</find>
+      <find>p_unary_operation_2</find>
+      <find>p_unary_operation_3</find>
+      <find>block -&gt;</find>
+      <find>p_if1</find>
     </findStrings>
     <replaceStrings>
       <replace>&quot; Value: &quot;</replace>
@@ -250,12 +225,14 @@
         <option value="$PROJECT_DIR$/lexer.py" />
         <option value="$PROJECT_DIR$/test" />
         <option value="$PROJECT_DIR$/outputlexer.txt" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/test.py" />
-        <option value="$PROJECT_DIR$/classes/nonterminal.py" />
         <option value="$PROJECT_DIR$/classes/code_generator.py" />
-        <option value="$PROJECT_DIR$/classes/parser_test.py" />
+        <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/9431072_9433105_PHASE2/test" />
+        <option value="$PROJECT_DIR$/9431072_9433105_PHASE2/main.py" />
         <option value="$PROJECT_DIR$/zosoist" />
+        <option value="$PROJECT_DIR$/classes/parser_test.py" />
+        <option value="$PROJECT_DIR$/classes/nonterminal.py" />
       </list>
     </option>
   </component>
@@ -377,13 +354,13 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="64" y="-11" width="1297" height="780" extended-state="6" />
+    <frame x="64" y="-11" width="2497" height="1452" extended-state="6" />
     <layout>
       <window_info id="Favorites" order="0" sideWeight="0.5014006" side_tool="true" weight="0.2810248" />
-      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49859944" visible="true" weight="0.1817454" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49859944" visible="true" weight="0.09269089" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="1" visible="true" weight="0.641357" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="1" visible="true" weight="0.15569326" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="3" />
       <window_info anchor="bottom" id="Python Console" order="4" weight="0.3279483" />
@@ -401,29 +378,6 @@
       <window_info anchor="right" id="Ant Build" order="3" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="4" weight="0.25" />
     </layout>
-    <layout-to-restore>
-      <window_info id="Favorites" order="0" sideWeight="0.5014006" side_tool="true" weight="0.2810248" />
-      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49859944" weight="0.33867094" />
-      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="1" visible="true" weight="0.24873096" />
-      <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="3" />
-      <window_info anchor="bottom" id="Python Console" order="4" weight="0.32850242" />
-      <window_info anchor="bottom" id="Docker" order="5" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Message" order="6" />
-      <window_info anchor="bottom" id="Find" order="7" weight="0.32850242" />
-      <window_info anchor="bottom" id="Run" order="8" weight="0.50402576" />
-      <window_info anchor="bottom" id="Debug" order="9" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="12" weight="0.32850242" />
-      <window_info anchor="right" id="Database" order="0" weight="0.3298639" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="SciView" order="2" />
-      <window_info anchor="right" id="Ant Build" order="3" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="4" weight="0.25" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -435,26 +389,12 @@
     <entry file="file://$PROJECT_DIR$/results.txt" />
     <entry file="file://$PROJECT_DIR$/input.txt" />
     <entry file="file://$PROJECT_DIR$/fateme_new.py" />
-    <entry file="file://$PROJECT_DIR$/parser_fateme.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="318" lean-forward="true" selection-start-line="318" selection-end-line="318" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/fateme.py" />
     <entry file="file://$PROJECT_DIR$/lexical_analyzer.py" />
     <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/ply/lex.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="12660">
           <caret line="908" selection-start-line="908" selection-end-line="908" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/parser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-224">
-          <caret line="414" lean-forward="true" selection-start-line="414" selection-end-line="414" />
         </state>
       </provider>
     </entry>
@@ -505,13 +445,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="8" selection-end-line="26" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/outputlexer.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -522,52 +455,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="3" column="21" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="36" lean-forward="true" selection-start-line="1" selection-start-column="36" selection-end-line="1" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/classes/lexer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="292" column="13" selection-start-line="292" selection-start-column="10" selection-end-line="292" selection-end-column="13" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/classes/nonterminal.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
-          <folding>
-            <marker date="1578656984403" expanded="true" signature="19:24" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/classes/parser_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="511" column="47" lean-forward="true" selection-start-line="511" selection-start-column="47" selection-end-line="511" selection-end-column="47" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-            <marker date="1578668807967" expanded="true" signature="20039:20044" ph="..." />
-            <marker date="1578668807967" expanded="true" signature="20339:20643" ph="..." />
-            <marker date="1578668807967" expanded="true" signature="20638:20643" ph="..." />
           </folding>
         </state>
       </provider>
@@ -583,10 +476,91 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="36" lean-forward="true" selection-start-line="1" selection-start-column="36" selection-end-line="1" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parsetab.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6195">
+          <caret line="414" lean-forward="true" selection-start-line="414" selection-end-line="414" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parser_fateme.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1155">
+          <caret line="318" lean-forward="true" selection-start-line="318" selection-end-line="318" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/9431072_9433105_PHASE2/test">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/9431072_9433105_PHASE2/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/9431072_9433105_PHASE2/parser_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" lean-forward="true" selection-start-line="9" selection-start-column="8" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="24" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/zosoist">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="40" lean-forward="true" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
+        <state relative-caret-position="225">
+          <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/parser_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="320" column="39" lean-forward="true" selection-start-line="320" selection-start-column="39" selection-end-line="320" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/nonterminal.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+          <folding>
+            <marker date="1578738227703" expanded="true" signature="19:24" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

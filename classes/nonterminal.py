@@ -11,6 +11,9 @@ class Nonterminal:
         self.true_list = []
         self.false_list = []
         self.m = None
+        self.quad = 100000000000
+        self.next_list = []
+        self.start = 0
 
 
 

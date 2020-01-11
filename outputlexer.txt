@@ -1,20 +1,24 @@
 Program	0
 
-a	1
+_main	1
 
-b	2
+a	2
 
-c	3
+b	3
 
-d	4
+c	4
 
-e	5
+d	5
 
-f	6
+e	6
 
-var	7
+f	7
 
-ver	8
+var	8
 
-_main	9
+ver	9
+
+grade	10
+
+_rating	11
 

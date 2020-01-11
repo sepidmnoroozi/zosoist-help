@@ -1,5 +1,4 @@
-from classes.lexer import Lexer
-from classes.parser_test import Parser
+
 
 filer = open("test", "r")                      #15,3,35
 
