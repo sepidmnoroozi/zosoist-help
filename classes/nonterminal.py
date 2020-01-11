@@ -7,6 +7,10 @@ class Nonterminal:
         self.dic = {}
         self.value = ""
         self.code = ""
+        self.label = ""
+        self.true_list = []
+        self.false_list = []
+        self.m = None
 
 
 

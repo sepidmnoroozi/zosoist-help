@@ -6,8 +6,10 @@ from classes.nonterminal import Nonterminal
 
 class Parser:
     def __init__(self):
-        self.counter = -1
+        self.t_counter = -1
+        self.l_counter = -1
         self.code_generator = CodeGenerator()
+        self.code_list = []
 
     tokens = l.Lexer().tokens
 
@@ -227,17 +229,48 @@ class Parser:
         """assignment : lvalue ASSIGNMENT exp SEMICOLON"""
         #print("""assignment -> lvalue ASSIGNMENT exp SEMICOLON""")
         p[0] = Nonterminal()
-        if p[3].value == "":
-            p[0].code = p[1].value + "=" + p[3].place + ";"
-        else:
-            p[0].code = p[1].value + "=" + p[3].value + ";"
 
-        print(p[0].code)
+
+        if p[3].place != "":
+            p[0].code = p[1].value + "=" + p[3].place + ";"
+            self.code_list.append(p[0].code)
+            print(self.code_list)
+        elif p[3].value != "":
+            p[0].code = p[1].value + "=" + p[3].value + ";"
+            self.code_list.append(p[0].code)
+            print(self.code_list)
+        else:
+            true_label = len(self.code_list)
+            false_label = true_label + 2
+
+            c = "L" + str(true_label) + ": " + p[1].value + "=" + "true" + ";"
+            self.code_list.append(c)
+            d = "L" + str(len(self.code_list)) + ": " + "goto " + str(false_label+1) + ";"
+            self.code_list.append(d)
+
+            c = "L" + str(false_label) + ": " + p[1].value + "=" + "false" + ";"
+            self.code_list.append(c)
+
+            d = "L" + str(false_label+1) + ": "
+            self.code_list.append(d)
+
+            for code in self.code_list:
+                index = self.code_list.index(code)
+                if "goto" in code and "_" in code:
+                    if "if" in code:
+                        new_code = code.replace("_", "L" + str(true_label))
+                        self.code_list[index] = new_code
+                    else:
+                        new_code = code.replace("_", "L" + str(false_label))
+                        self.code_list[index] = new_code
+
+            print(self.code_list)
+
 
 
     def p_lvalue_1(self, p):
         """lvalue : lvalue1 %prec LVALI"""
-        #print("""lvalue -> lvalue1""")
+        # print("""lvalue -> lvalue1""")
         p[0] = p[1]
 
     def p_lvalue_2(self, p):
@@ -250,7 +283,7 @@ class Parser:
 
     def p_lval1(self, p):
         """lvalue1 : ID"""
-        #print("""lvalue1 -> ID""")
+        # print("""lvalue1 -> ID""")
         #print("************")
         #print(p[1])
         p[0] = Nonterminal()
@@ -346,15 +379,25 @@ class Parser:
         #print("************")
         p[0] = Nonterminal()
         p[0].type = "bool"
-        p[0].value = p[1]
+        next_quad = len(self.code_list)
+        p[0].true_list = [next_quad]
+        p[0].m = next_quad+1
+        code = "L" + str(next_quad) + ": " + "goto _" + ";"
+        self.code_list.append(code)
+
+
+
 
     def p_exp_3(self, p):
         """exp : FALSE"""
         #print("""exp -> FALSE""")
         #print("************")
         p[0] = Nonterminal()
-        p[0].type = "bool"
-        p[0].value = p[1]
+        next_quad = len(self.code_list)
+        p[0].false_list = [next_quad]
+        p[0].m = next_quad + 1
+        code = "L" + str(next_quad) + ": " + "goto _" + ";"
+        self.code_list.append(code)
 
     def p_exp_4(self, p):
         """exp : STRING"""
@@ -362,7 +405,7 @@ class Parser:
 
     def p_exp_5(self, p):
         """exp : lvalue"""
-        #print("""exp -> lvalue""")
+        # print("""exp -> lvalue""")
         p[0] = p[1]
 
     def p_exp_6(self, p):
@@ -372,10 +415,12 @@ class Parser:
 
     def p_exp_7(self, p):
         """exp : logical_operation"""
+        p[0] = p[1]
         #print("""exp -> logical_operation""")
 
     def p_exp_8(self, p):
         """exp : comparison_operation %prec COMOP"""
+        p[0] = p[1]
         #print("""exp -> comparison_operation""")
 
     def p_exp_9(self, p):
@@ -399,102 +444,124 @@ class Parser:
     def p_binary_operation(self, p):
         """binary_operation : exp ADDITION exp """
         #print(p[1].value + p[2] + p[3].value)
-        self.code_generator.generate_arithmetic_code(p, self.new_temp())
+        self.code_generator.generate_arithmetic_code(p, self.new_temp(), self.code_list)
 
         #print("""binary_operation -> exp ADDITION exp """)
 
     def p_binary_operation_1(self, p):
         """binary_operation : exp SUBTRACTION exp"""
         #print("""binary_operation -> exp SUBTRACTION exp""")
-        self.code_generator.generate_arithmetic_code(p, self.new_temp())
+        self.code_generator.generate_arithmetic_code(p, self.new_temp(), self.code_list)
 
     def p_binary_operation_2(self, p):
         """binary_operation : exp MULTIPLICATION exp"""
-        self.code_generator.generate_arithmetic_code(p, self.new_temp())
+        self.code_generator.generate_arithmetic_code(p, self.new_temp(), self.code_list)
 
     def p_binary_operation_3(self, p):
         """binary_operation : exp DIVISION exp"""
-        self.code_generator.generate_arithmetic_code(p, self.new_temp())
+        self.code_generator.generate_arithmetic_code(p, self.new_temp(), self.code_list)
 
     def p_binary_operation_4(self, p):
         """binary_operation : exp MODULO exp"""
-        self.code_generator.generate_arithmetic_code(p, self.new_temp())
+        self.code_generator.generate_arithmetic_code(p, self.new_temp(), self.code_list)
 
     def p_binary_operation_5(self, p):
         """binary_operation : exp POWER exp"""
         #print("""binary_operation -> exp POWER exp""")
-        self.code_generator.generate_arithmetic_code(p, self.new_temp())
+        self.code_generator.generate_arithmetic_code(p, self.new_temp(), self.code_list)
 
     def p_binary_operation_6(self, p):
         """binary_operation : exp SHIFT_LEFT exp"""
         #print("""binary_operation -> exp SHIFT_LEFT exp""")
-        self.code_generator.generate_arithmetic_code(p, self.new_temp())
+        self.code_generator.generate_arithmetic_code(p, self.new_temp(), self.code_list)
 
 
     def p_binary_operation_7(self, p):
         """binary_operation : exp SHIFT_RIGHT exp"""
         #print("""binary_operation -> exp SHIFT_RIGHT exp""")
-        self.code_generator.generate_arithmetic_code(p, self.new_temp())
+        self.code_generator.generate_arithmetic_code(p, self.new_temp(), self.code_list)
 
     def p_logical_operation(self, p):
         """logical_operation : exp AND exp"""
-        #print("""logical_operation -> exp AND exp""")
+        p[0] = Nonterminal()
+        m = p[1].m
+        self.backpatch(p[1].true_list, m)
+        p[0].false_list = p[1].false_list + p[3].false_list
+        p[0].true_list = p[3].true_list
+
+        p[0].code = self.code_list
+        print("""logical_operation -> exp AND exp""")
+        print(self.code_list)
 
 
     def p_logical_operation_1(self, p):
         """logical_operation : exp OR exp"""
-        #print("""logical_operation -> exp OR exp""")
+        p[0] = Nonterminal()
+        m = p[1].m
+        self.backpatch(p[1].false_list, m)
+        p[0].true_list = p[1].true_list + p[3].true_list
+        p[0].false_list = p[3].false_list
+
+        p[0].code = self.code_list
+        print("""logical_operation -> exp OR exp""")
+        print(self.code_list)
 
 
     #######5
     def p_comparison_operation_1(self, p):
         """comparison_operation : exp LT exp"""
-        #print("""comparison_operation -> exp LT exp""")
+        self.code_generator.generate_boolean_code(p, self.code_list)
+
 
     def p_comparison_operation_2(self, p):
         """comparison_operation : exp LE exp"""
-        #print("""comparison_operation -> exp LE exp""")
+        self.code_generator.generate_boolean_code(p, self.code_list)
+
 
     def p_comparison_operation_3(self, p):
         """comparison_operation : exp GT exp"""
-        #print("""comparison_operation -> exp GT exp""")
+        self.code_generator.generate_boolean_code(p, self.code_list)
 
     def p_comparison_operation_4(self, p):
         """comparison_operation : exp GE exp"""
-        #print("""comparison_operation -> exp GE exp""")
+        self.code_generator.generate_boolean_code(p, self.code_list)
 
     def p_comparison_operation_5(self, p):
         """comparison_operation : exp EQ exp"""
-        #print("""comparison_operation -> exp EQ exp""")
+        self.code_generator.generate_boolean_code(p, self.code_list)
 
     def p_comparison_operation_6(self, p):
         """comparison_operation : exp NE exp"""
-        #print("""comparison_operation -> exp NE exp""")
+        self.code_generator.generate_boolean_code(p, self.code_list)
 
     def p_bitwise_operation_1(self, p):
         """bitwise_operation : exp BITWISE_AND exp"""
-        #print("""bitwise_operation -> exp BITWISE_AND exp""")
-        self.code_generator.generate_arithmetic_code(p, self.new_temp())
+        self.code_generator.generate_arithmetic_code(p, self.new_temp(), self.code_list)
 
     def p_bitwise_operation_2(self, p):
         """bitwise_operation : exp BITWISE_OR exp"""
-        #print("""bitwise_operation -> exp BITWISE_OR exp""")
-        self.code_generator.generate_arithmetic_code(p, self.new_temp())
+        self.code_generator.generate_arithmetic_code(p, self.new_temp(), self.code_list)
 
     def p_unary_operation_1(self, p):
         """unary_operation : SUBTRACTION exp %prec UMINUS"""
-        #print("""unary_operation -> SUBTRACTION exp""")
-        self.code_generator.generate_arithmetic_code(p, self.new_temp())
+        self.code_generator.generate_arithmetic_code(p, self.new_temp(), self.code_list)
 
     def p_unary_operation_2(self, p):
         """unary_operation : NOT exp"""
-        #print("""unary_operation -> NOT exp""")
-        self.code_generator.generate_arithmetic_code(p, self.new_temp())
+        print("""unary_operation -> NOT exp""")
+        p[0] = Nonterminal()
+        p[0].place = self.new_temp()
+        arg1 = p[1]
+        arg2 = p[2].value
+        p[0].code = "L" + str(len(self.code_list)) + ": " + p[0].place + "=" + arg1 + arg2 + ";"
+
+        self.code_list.append(p[0].code)
+        print(self.code_list)
 
 
     def p_unary_operation_3(self, p):
         """unary_operation : BITWISE_NOT exp"""
-        #print("""unary_operation -> BITWISE_NOT exp""")
+        self.code_generator.generate_arithmetic_code(p, self.new_temp(), self.code_list)
 
     def p_function_call_2(self, p):
         """function_call : lvalue2 function_call_body"""
@@ -558,8 +625,27 @@ class Parser:
     )
 
     def new_temp(self):
-        self.counter += 1
-        return "TT" + str(self.counter)
+        self.t_counter += 1
+        return "TT" + str(self.t_counter)
+
+    def new_label(self):
+        self.l_counter += 1
+        return "L" + str(self.l_counter)
+
+    def backpatch(self, in_list, m):
+        # print("backpatch")
+        # print(in_list)
+        # print(m)
+        for index in in_list:
+            # print("in for")
+            # print(index)
+            # print(m)
+            code = self.code_list[index]
+            # print(code)
+            new_code = code.replace("_", str(m))
+            # print(code)
+            self.code_list[index] = new_code
+
 
     def build(self, **kwargs):
         """build the parser"""

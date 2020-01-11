@@ -1,12 +1,3 @@
-dic = {}
-print(len(dic))
-
-a = 'class'
-if a in dic:
-    print(dic[a])
-else:
-    num = len(dic)
-    dic[a] = num
-
-
-print(dic)
+code = "2: if c<d goto _"
+new_code = code.replace("goto", "4")
+print(new_code)
