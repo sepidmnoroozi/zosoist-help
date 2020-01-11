@@ -13,7 +13,7 @@ class Nonterminal:
         self.m = None
         self.quad = 100000000000
         self.next_list = []
-        self.start = 0
+        self.address = 0
 
 
 

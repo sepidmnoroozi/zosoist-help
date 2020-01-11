@@ -1,18 +1,19 @@
 class Program{
     static void _main(){
-        int a, b, c, d, e, f, var, ver;
-        int ver;
-        a = 3;
-        b = 4 * a;
-        c = 6;
-        d = 5;
-        e = 9;
-        f = 0;
         real grade;
 
-
 		grade = 12;
-		if(grade > 16)
+		if(grade > 16){
 			_rating = 4;
+			a = 7;
+			b = 6;
+		}
+		elseif(grade > 14){
+		    a = 9;
+		    b = 8;
+		}
+		else{
+		    a = 9;
+		}
     }
 }

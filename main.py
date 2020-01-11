@@ -1,4 +1,4 @@
-from classes.lexer import Lexer
+from fati.lexer import Lexer
 from classes.parser_test import Parser
 
 filer = open("zosoist", "r")                      #15,3,35

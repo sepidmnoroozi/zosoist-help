@@ -71,7 +71,7 @@ Rule 58    statement_var_dec -> return_type var_list SEMICOLON
 Rule 59    statement_var_dec -> lvalue1 var_list SEMICOLON
 Rule 60    m -> <empty>
 Rule 61    n -> <empty>
-Rule 62    if -> IF LP exp RP m block
+Rule 62    if -> IF LP exp RP block
 Rule 63    if -> IF LP exp RP block ELSE block
 Rule 64    if -> IF LP exp RP block elseifs
 Rule 65    if -> IF LP exp RP block elseifs ELSE block
@@ -217,7 +217,7 @@ logical_operation    : 81
 lvalue               : 52 79
 lvalue1              : 15 17 36 53 59 109
 lvalue2              : 54 108
-m                    : 62
+m                    : 
 macro                : 2
 macros               : 1 2
 n                    : 
@@ -1619,7 +1619,7 @@ state 69
     (57) print -> . PRINT LP STRING RP SEMICOLON
     (58) statement_var_dec -> . return_type var_list SEMICOLON
     (59) statement_var_dec -> . lvalue1 var_list SEMICOLON
-    (62) if -> . IF LP exp RP m block
+    (62) if -> . IF LP exp RP block
     (63) if -> . IF LP exp RP block ELSE block
     (64) if -> . IF LP exp RP block elseifs
     (65) if -> . IF LP exp RP block elseifs ELSE block
@@ -3854,7 +3854,7 @@ state 116
 
 state 117
 
-    (62) if -> IF . LP exp RP m block
+    (62) if -> IF . LP exp RP block
     (63) if -> IF . LP exp RP block ELSE block
     (64) if -> IF . LP exp RP block elseifs
     (65) if -> IF . LP exp RP block elseifs ELSE block
@@ -5304,7 +5304,7 @@ state 147
     (57) print -> . PRINT LP STRING RP SEMICOLON
     (58) statement_var_dec -> . return_type var_list SEMICOLON
     (59) statement_var_dec -> . lvalue1 var_list SEMICOLON
-    (62) if -> . IF LP exp RP m block
+    (62) if -> . IF LP exp RP block
     (63) if -> . IF LP exp RP block ELSE block
     (64) if -> . IF LP exp RP block elseifs
     (65) if -> . IF LP exp RP block elseifs ELSE block
@@ -5517,7 +5517,7 @@ state 152
 
 state 153
 
-    (62) if -> IF LP . exp RP m block
+    (62) if -> IF LP . exp RP block
     (63) if -> IF LP . exp RP block ELSE block
     (64) if -> IF LP . exp RP block elseifs
     (65) if -> IF LP . exp RP block elseifs ELSE block
@@ -6041,7 +6041,7 @@ state 166
 
 state 167
 
-    (62) if -> IF LP exp . RP m block
+    (62) if -> IF LP exp . RP block
     (63) if -> IF LP exp . RP block ELSE block
     (64) if -> IF LP exp . RP block elseifs
     (65) if -> IF LP exp . RP block elseifs ELSE block
@@ -6254,11 +6254,10 @@ state 173
 
 state 174
 
-    (62) if -> IF LP exp RP . m block
+    (62) if -> IF LP exp RP . block
     (63) if -> IF LP exp RP . block ELSE block
     (64) if -> IF LP exp RP . block elseifs
     (65) if -> IF LP exp RP . block elseifs ELSE block
-    (60) m -> .
     (37) block -> . LCB statements_list RCB
     (38) block -> . statement
     (41) statement -> . SEMICOLON
@@ -6289,7 +6288,7 @@ state 174
     (57) print -> . PRINT LP STRING RP SEMICOLON
     (58) statement_var_dec -> . return_type var_list SEMICOLON
     (59) statement_var_dec -> . lvalue1 var_list SEMICOLON
-    (62) if -> . IF LP exp RP m block
+    (62) if -> . IF LP exp RP block
     (63) if -> . IF LP exp RP block ELSE block
     (64) if -> . IF LP exp RP block elseifs
     (65) if -> . IF LP exp RP block elseifs ELSE block
@@ -6330,29 +6329,6 @@ state 174
     (56) lvalue1 -> . ID
     (55) lvalue2 -> . ID DOT ID
 
-  ! shift/reduce conflict for LCB resolved as shift
-  ! shift/reduce conflict for SEMICOLON resolved as shift
-  ! shift/reduce conflict for INTEGER resolved as shift
-  ! shift/reduce conflict for REAL resolved as shift
-  ! shift/reduce conflict for TRUE resolved as shift
-  ! shift/reduce conflict for FALSE resolved as shift
-  ! shift/reduce conflict for STRING resolved as shift
-  ! shift/reduce conflict for LP resolved as shift
-  ! shift/reduce conflict for PRINT resolved as shift
-  ! shift/reduce conflict for IF resolved as shift
-  ! shift/reduce conflict for FOR resolved as shift
-  ! shift/reduce conflict for WHILE resolved as shift
-  ! shift/reduce conflict for RETURN resolved as shift
-  ! shift/reduce conflict for BREAK resolved as shift
-  ! shift/reduce conflict for CONTINUE resolved as shift
-  ! shift/reduce conflict for SUBTRACTION resolved as shift
-  ! shift/reduce conflict for NOT resolved as shift
-  ! shift/reduce conflict for BITWISE_NOT resolved as shift
-  ! shift/reduce conflict for INT_TYPE resolved as shift
-  ! shift/reduce conflict for REAL_TYPE resolved as shift
-  ! shift/reduce conflict for BOOL_TYPE resolved as shift
-  ! shift/reduce conflict for STRING_TYPE resolved as shift
-  ! shift/reduce conflict for ID resolved as shift
     LCB             shift and go to state 100
     SEMICOLON       shift and go to state 102
     INTEGER         shift and go to state 51
@@ -6377,33 +6353,8 @@ state 174
     STRING_TYPE     shift and go to state 26
     ID              shift and go to state 49
 
-  ! LCB             [ reduce using rule 60 (m -> .) ]
-  ! SEMICOLON       [ reduce using rule 60 (m -> .) ]
-  ! INTEGER         [ reduce using rule 60 (m -> .) ]
-  ! REAL            [ reduce using rule 60 (m -> .) ]
-  ! TRUE            [ reduce using rule 60 (m -> .) ]
-  ! FALSE           [ reduce using rule 60 (m -> .) ]
-  ! STRING          [ reduce using rule 60 (m -> .) ]
-  ! LP              [ reduce using rule 60 (m -> .) ]
-  ! PRINT           [ reduce using rule 60 (m -> .) ]
-  ! IF              [ reduce using rule 60 (m -> .) ]
-  ! FOR             [ reduce using rule 60 (m -> .) ]
-  ! WHILE           [ reduce using rule 60 (m -> .) ]
-  ! RETURN          [ reduce using rule 60 (m -> .) ]
-  ! BREAK           [ reduce using rule 60 (m -> .) ]
-  ! CONTINUE        [ reduce using rule 60 (m -> .) ]
-  ! SUBTRACTION     [ reduce using rule 60 (m -> .) ]
-  ! NOT             [ reduce using rule 60 (m -> .) ]
-  ! BITWISE_NOT     [ reduce using rule 60 (m -> .) ]
-  ! INT_TYPE        [ reduce using rule 60 (m -> .) ]
-  ! REAL_TYPE       [ reduce using rule 60 (m -> .) ]
-  ! BOOL_TYPE       [ reduce using rule 60 (m -> .) ]
-  ! STRING_TYPE     [ reduce using rule 60 (m -> .) ]
-  ! ID              [ reduce using rule 60 (m -> .) ]
-
     exp                            shift and go to state 103
-    m                              shift and go to state 178
-    block                          shift and go to state 179
+    block                          shift and go to state 178
     statement                      shift and go to state 101
     assignment                     shift and go to state 104
     print                          shift and go to state 105
@@ -6480,7 +6431,7 @@ state 175
     BITWISE_NOT     shift and go to state 68
     ID              shift and go to state 49
 
-    exp                            shift and go to state 180
+    exp                            shift and go to state 179
     lvalue                         shift and go to state 56
     binary_operation               shift and go to state 57
     logical_operation              shift and go to state 58
@@ -6524,7 +6475,7 @@ state 176
     (57) print -> . PRINT LP STRING RP SEMICOLON
     (58) statement_var_dec -> . return_type var_list SEMICOLON
     (59) statement_var_dec -> . lvalue1 var_list SEMICOLON
-    (62) if -> . IF LP exp RP m block
+    (62) if -> . IF LP exp RP block
     (63) if -> . IF LP exp RP block ELSE block
     (64) if -> . IF LP exp RP block elseifs
     (65) if -> . IF LP exp RP block elseifs ELSE block
@@ -6590,7 +6541,7 @@ state 176
     ID              shift and go to state 49
 
     exp                            shift and go to state 103
-    block                          shift and go to state 181
+    block                          shift and go to state 180
     statement                      shift and go to state 101
     assignment                     shift and go to state 104
     print                          shift and go to state 105
@@ -6647,127 +6598,7 @@ state 177
 
 state 178
 
-    (62) if -> IF LP exp RP m . block
-    (37) block -> . LCB statements_list RCB
-    (38) block -> . statement
-    (41) statement -> . SEMICOLON
-    (42) statement -> . exp SEMICOLON
-    (43) statement -> . assignment
-    (44) statement -> . print
-    (45) statement -> . statement_var_dec
-    (46) statement -> . if
-    (47) statement -> . for
-    (48) statement -> . while
-    (49) statement -> . return
-    (50) statement -> . break
-    (51) statement -> . continue
-    (74) exp -> . INTEGER
-    (75) exp -> . REAL
-    (76) exp -> . TRUE
-    (77) exp -> . FALSE
-    (78) exp -> . STRING
-    (79) exp -> . lvalue
-    (80) exp -> . binary_operation
-    (81) exp -> . logical_operation
-    (82) exp -> . comparison_operation
-    (83) exp -> . bitwise_operation
-    (84) exp -> . unary_operation
-    (85) exp -> . LP exp RP
-    (86) exp -> . function_call
-    (52) assignment -> . lvalue ASSIGNMENT exp SEMICOLON
-    (57) print -> . PRINT LP STRING RP SEMICOLON
-    (58) statement_var_dec -> . return_type var_list SEMICOLON
-    (59) statement_var_dec -> . lvalue1 var_list SEMICOLON
-    (62) if -> . IF LP exp RP m block
-    (63) if -> . IF LP exp RP block ELSE block
-    (64) if -> . IF LP exp RP block elseifs
-    (65) if -> . IF LP exp RP block elseifs ELSE block
-    (69) for -> . FOR LP ID IN exp TO exp STEPS exp RP block
-    (70) while -> . WHILE LP exp RP block
-    (71) return -> . RETURN exp SEMICOLON
-    (72) break -> . BREAK SEMICOLON
-    (73) continue -> . CONTINUE SEMICOLON
-    (53) lvalue -> . lvalue1
-    (54) lvalue -> . lvalue2
-    (87) binary_operation -> . exp ADDITION exp
-    (88) binary_operation -> . exp SUBTRACTION exp
-    (89) binary_operation -> . exp MULTIPLICATION exp
-    (90) binary_operation -> . exp DIVISION exp
-    (91) binary_operation -> . exp MODULO exp
-    (92) binary_operation -> . exp POWER exp
-    (93) binary_operation -> . exp SHIFT_LEFT exp
-    (94) binary_operation -> . exp SHIFT_RIGHT exp
-    (95) logical_operation -> . exp AND exp
-    (96) logical_operation -> . exp OR exp
-    (97) comparison_operation -> . exp LT exp
-    (98) comparison_operation -> . exp LE exp
-    (99) comparison_operation -> . exp GT exp
-    (100) comparison_operation -> . exp GE exp
-    (101) comparison_operation -> . exp EQ exp
-    (102) comparison_operation -> . exp NE exp
-    (103) bitwise_operation -> . exp BITWISE_AND exp
-    (104) bitwise_operation -> . exp BITWISE_OR exp
-    (105) unary_operation -> . SUBTRACTION exp
-    (106) unary_operation -> . NOT exp
-    (107) unary_operation -> . BITWISE_NOT exp
-    (108) function_call -> . lvalue2 function_call_body
-    (109) function_call -> . lvalue1 function_call_body
-    (18) return_type -> . INT_TYPE
-    (19) return_type -> . REAL_TYPE
-    (20) return_type -> . BOOL_TYPE
-    (21) return_type -> . STRING_TYPE
-    (56) lvalue1 -> . ID
-    (55) lvalue2 -> . ID DOT ID
-
-    LCB             shift and go to state 100
-    SEMICOLON       shift and go to state 102
-    INTEGER         shift and go to state 51
-    REAL            shift and go to state 52
-    TRUE            shift and go to state 53
-    FALSE           shift and go to state 54
-    STRING          shift and go to state 55
-    LP              shift and go to state 62
-    PRINT           shift and go to state 114
-    IF              shift and go to state 117
-    FOR             shift and go to state 118
-    WHILE           shift and go to state 119
-    RETURN          shift and go to state 120
-    BREAK           shift and go to state 121
-    CONTINUE        shift and go to state 122
-    SUBTRACTION     shift and go to state 66
-    NOT             shift and go to state 67
-    BITWISE_NOT     shift and go to state 68
-    INT_TYPE        shift and go to state 23
-    REAL_TYPE       shift and go to state 24
-    BOOL_TYPE       shift and go to state 25
-    STRING_TYPE     shift and go to state 26
-    ID              shift and go to state 49
-
-    exp                            shift and go to state 103
-    block                          shift and go to state 182
-    statement                      shift and go to state 101
-    assignment                     shift and go to state 104
-    print                          shift and go to state 105
-    statement_var_dec              shift and go to state 106
-    if                             shift and go to state 107
-    for                            shift and go to state 108
-    while                          shift and go to state 109
-    return                         shift and go to state 110
-    break                          shift and go to state 111
-    continue                       shift and go to state 112
-    lvalue                         shift and go to state 113
-    binary_operation               shift and go to state 57
-    logical_operation              shift and go to state 58
-    comparison_operation           shift and go to state 59
-    bitwise_operation              shift and go to state 60
-    unary_operation                shift and go to state 61
-    function_call                  shift and go to state 63
-    return_type                    shift and go to state 115
-    lvalue1                        shift and go to state 116
-    lvalue2                        shift and go to state 65
-
-state 179
-
+    (62) if -> IF LP exp RP block .
     (63) if -> IF LP exp RP block . ELSE block
     (64) if -> IF LP exp RP block . elseifs
     (65) if -> IF LP exp RP block . elseifs ELSE block
@@ -6775,13 +6606,41 @@ state 179
     (67) elseifs -> . elseif
     (68) elseif -> . ELSEIF LP exp RP block
 
-    ELSE            shift and go to state 183
-    ELSEIF          shift and go to state 186
+    RCB             reduce using rule 62 (if -> IF LP exp RP block .)
+    VOID            reduce using rule 62 (if -> IF LP exp RP block .)
+    STATIC          reduce using rule 62 (if -> IF LP exp RP block .)
+    INT_TYPE        reduce using rule 62 (if -> IF LP exp RP block .)
+    REAL_TYPE       reduce using rule 62 (if -> IF LP exp RP block .)
+    BOOL_TYPE       reduce using rule 62 (if -> IF LP exp RP block .)
+    STRING_TYPE     reduce using rule 62 (if -> IF LP exp RP block .)
+    ID              reduce using rule 62 (if -> IF LP exp RP block .)
+    SEMICOLON       reduce using rule 62 (if -> IF LP exp RP block .)
+    INTEGER         reduce using rule 62 (if -> IF LP exp RP block .)
+    REAL            reduce using rule 62 (if -> IF LP exp RP block .)
+    TRUE            reduce using rule 62 (if -> IF LP exp RP block .)
+    FALSE           reduce using rule 62 (if -> IF LP exp RP block .)
+    STRING          reduce using rule 62 (if -> IF LP exp RP block .)
+    LP              reduce using rule 62 (if -> IF LP exp RP block .)
+    PRINT           reduce using rule 62 (if -> IF LP exp RP block .)
+    IF              reduce using rule 62 (if -> IF LP exp RP block .)
+    FOR             reduce using rule 62 (if -> IF LP exp RP block .)
+    WHILE           reduce using rule 62 (if -> IF LP exp RP block .)
+    RETURN          reduce using rule 62 (if -> IF LP exp RP block .)
+    BREAK           reduce using rule 62 (if -> IF LP exp RP block .)
+    CONTINUE        reduce using rule 62 (if -> IF LP exp RP block .)
+    SUBTRACTION     reduce using rule 62 (if -> IF LP exp RP block .)
+    NOT             reduce using rule 62 (if -> IF LP exp RP block .)
+    BITWISE_NOT     reduce using rule 62 (if -> IF LP exp RP block .)
+    ELSE            shift and go to state 181
+    ELSEIF          shift and go to state 184
 
-    elseifs                        shift and go to state 184
-    elseif                         shift and go to state 185
+  ! ELSE            [ reduce using rule 62 (if -> IF LP exp RP block .) ]
+  ! ELSEIF          [ reduce using rule 62 (if -> IF LP exp RP block .) ]
 
-state 180
+    elseifs                        shift and go to state 182
+    elseif                         shift and go to state 183
+
+state 179
 
     (69) for -> FOR LP ID IN exp . TO exp STEPS exp RP block
     (87) binary_operation -> exp . ADDITION exp
@@ -6803,7 +6662,7 @@ state 180
     (103) bitwise_operation -> exp . BITWISE_AND exp
     (104) bitwise_operation -> exp . BITWISE_OR exp
 
-    TO              shift and go to state 187
+    TO              shift and go to state 185
     ADDITION        shift and go to state 74
     SUBTRACTION     shift and go to state 75
     MULTIPLICATION  shift and go to state 76
@@ -6824,7 +6683,7 @@ state 180
     BITWISE_OR      shift and go to state 91
 
 
-state 181
+state 180
 
     (70) while -> WHILE LP exp RP block .
 
@@ -6857,40 +6716,7 @@ state 181
     ELSEIF          reduce using rule 70 (while -> WHILE LP exp RP block .)
 
 
-state 182
-
-    (62) if -> IF LP exp RP m block .
-
-    RCB             reduce using rule 62 (if -> IF LP exp RP m block .)
-    VOID            reduce using rule 62 (if -> IF LP exp RP m block .)
-    STATIC          reduce using rule 62 (if -> IF LP exp RP m block .)
-    INT_TYPE        reduce using rule 62 (if -> IF LP exp RP m block .)
-    REAL_TYPE       reduce using rule 62 (if -> IF LP exp RP m block .)
-    BOOL_TYPE       reduce using rule 62 (if -> IF LP exp RP m block .)
-    STRING_TYPE     reduce using rule 62 (if -> IF LP exp RP m block .)
-    ID              reduce using rule 62 (if -> IF LP exp RP m block .)
-    SEMICOLON       reduce using rule 62 (if -> IF LP exp RP m block .)
-    INTEGER         reduce using rule 62 (if -> IF LP exp RP m block .)
-    REAL            reduce using rule 62 (if -> IF LP exp RP m block .)
-    TRUE            reduce using rule 62 (if -> IF LP exp RP m block .)
-    FALSE           reduce using rule 62 (if -> IF LP exp RP m block .)
-    STRING          reduce using rule 62 (if -> IF LP exp RP m block .)
-    LP              reduce using rule 62 (if -> IF LP exp RP m block .)
-    PRINT           reduce using rule 62 (if -> IF LP exp RP m block .)
-    IF              reduce using rule 62 (if -> IF LP exp RP m block .)
-    FOR             reduce using rule 62 (if -> IF LP exp RP m block .)
-    WHILE           reduce using rule 62 (if -> IF LP exp RP m block .)
-    RETURN          reduce using rule 62 (if -> IF LP exp RP m block .)
-    BREAK           reduce using rule 62 (if -> IF LP exp RP m block .)
-    CONTINUE        reduce using rule 62 (if -> IF LP exp RP m block .)
-    SUBTRACTION     reduce using rule 62 (if -> IF LP exp RP m block .)
-    NOT             reduce using rule 62 (if -> IF LP exp RP m block .)
-    BITWISE_NOT     reduce using rule 62 (if -> IF LP exp RP m block .)
-    ELSE            reduce using rule 62 (if -> IF LP exp RP m block .)
-    ELSEIF          reduce using rule 62 (if -> IF LP exp RP m block .)
-
-
-state 183
+state 181
 
     (63) if -> IF LP exp RP block ELSE . block
     (37) block -> . LCB statements_list RCB
@@ -6923,7 +6749,7 @@ state 183
     (57) print -> . PRINT LP STRING RP SEMICOLON
     (58) statement_var_dec -> . return_type var_list SEMICOLON
     (59) statement_var_dec -> . lvalue1 var_list SEMICOLON
-    (62) if -> . IF LP exp RP m block
+    (62) if -> . IF LP exp RP block
     (63) if -> . IF LP exp RP block ELSE block
     (64) if -> . IF LP exp RP block elseifs
     (65) if -> . IF LP exp RP block elseifs ELSE block
@@ -6989,7 +6815,7 @@ state 183
     ID              shift and go to state 49
 
     exp                            shift and go to state 103
-    block                          shift and go to state 188
+    block                          shift and go to state 186
     statement                      shift and go to state 101
     assignment                     shift and go to state 104
     print                          shift and go to state 105
@@ -7011,7 +6837,7 @@ state 183
     lvalue1                        shift and go to state 116
     lvalue2                        shift and go to state 65
 
-state 184
+state 182
 
     (64) if -> IF LP exp RP block elseifs .
     (65) if -> IF LP exp RP block elseifs . ELSE block
@@ -7043,18 +6869,20 @@ state 184
     SUBTRACTION     reduce using rule 64 (if -> IF LP exp RP block elseifs .)
     NOT             reduce using rule 64 (if -> IF LP exp RP block elseifs .)
     BITWISE_NOT     reduce using rule 64 (if -> IF LP exp RP block elseifs .)
-    ELSEIF          reduce using rule 64 (if -> IF LP exp RP block elseifs .)
-    ELSE            shift and go to state 189
+    ELSE            shift and go to state 187
+    ELSEIF          shift and go to state 184
 
   ! ELSE            [ reduce using rule 64 (if -> IF LP exp RP block elseifs .) ]
-  ! ELSEIF          [ shift and go to state 186 ]
+  ! ELSEIF          [ reduce using rule 64 (if -> IF LP exp RP block elseifs .) ]
 
-    elseif                         shift and go to state 190
+    elseif                         shift and go to state 188
 
-state 185
+state 183
 
     (67) elseifs -> elseif .
 
+    ELSE            reduce using rule 67 (elseifs -> elseif .)
+    ELSEIF          reduce using rule 67 (elseifs -> elseif .)
     RCB             reduce using rule 67 (elseifs -> elseif .)
     VOID            reduce using rule 67 (elseifs -> elseif .)
     STATIC          reduce using rule 67 (elseifs -> elseif .)
@@ -7080,20 +6908,271 @@ state 185
     SUBTRACTION     reduce using rule 67 (elseifs -> elseif .)
     NOT             reduce using rule 67 (elseifs -> elseif .)
     BITWISE_NOT     reduce using rule 67 (elseifs -> elseif .)
-    ELSE            reduce using rule 67 (elseifs -> elseif .)
-    ELSEIF          reduce using rule 67 (elseifs -> elseif .)
 
 
-state 186
+state 184
 
     (68) elseif -> ELSEIF . LP exp RP block
 
-    LP              shift and go to state 191
+    LP              shift and go to state 189
+
+
+state 185
+
+    (69) for -> FOR LP ID IN exp TO . exp STEPS exp RP block
+    (74) exp -> . INTEGER
+    (75) exp -> . REAL
+    (76) exp -> . TRUE
+    (77) exp -> . FALSE
+    (78) exp -> . STRING
+    (79) exp -> . lvalue
+    (80) exp -> . binary_operation
+    (81) exp -> . logical_operation
+    (82) exp -> . comparison_operation
+    (83) exp -> . bitwise_operation
+    (84) exp -> . unary_operation
+    (85) exp -> . LP exp RP
+    (86) exp -> . function_call
+    (53) lvalue -> . lvalue1
+    (54) lvalue -> . lvalue2
+    (87) binary_operation -> . exp ADDITION exp
+    (88) binary_operation -> . exp SUBTRACTION exp
+    (89) binary_operation -> . exp MULTIPLICATION exp
+    (90) binary_operation -> . exp DIVISION exp
+    (91) binary_operation -> . exp MODULO exp
+    (92) binary_operation -> . exp POWER exp
+    (93) binary_operation -> . exp SHIFT_LEFT exp
+    (94) binary_operation -> . exp SHIFT_RIGHT exp
+    (95) logical_operation -> . exp AND exp
+    (96) logical_operation -> . exp OR exp
+    (97) comparison_operation -> . exp LT exp
+    (98) comparison_operation -> . exp LE exp
+    (99) comparison_operation -> . exp GT exp
+    (100) comparison_operation -> . exp GE exp
+    (101) comparison_operation -> . exp EQ exp
+    (102) comparison_operation -> . exp NE exp
+    (103) bitwise_operation -> . exp BITWISE_AND exp
+    (104) bitwise_operation -> . exp BITWISE_OR exp
+    (105) unary_operation -> . SUBTRACTION exp
+    (106) unary_operation -> . NOT exp
+    (107) unary_operation -> . BITWISE_NOT exp
+    (108) function_call -> . lvalue2 function_call_body
+    (109) function_call -> . lvalue1 function_call_body
+    (56) lvalue1 -> . ID
+    (55) lvalue2 -> . ID DOT ID
+
+    INTEGER         shift and go to state 51
+    REAL            shift and go to state 52
+    TRUE            shift and go to state 53
+    FALSE           shift and go to state 54
+    STRING          shift and go to state 55
+    LP              shift and go to state 62
+    SUBTRACTION     shift and go to state 66
+    NOT             shift and go to state 67
+    BITWISE_NOT     shift and go to state 68
+    ID              shift and go to state 49
+
+    exp                            shift and go to state 190
+    lvalue                         shift and go to state 56
+    binary_operation               shift and go to state 57
+    logical_operation              shift and go to state 58
+    comparison_operation           shift and go to state 59
+    bitwise_operation              shift and go to state 60
+    unary_operation                shift and go to state 61
+    function_call                  shift and go to state 63
+    lvalue1                        shift and go to state 64
+    lvalue2                        shift and go to state 65
+
+state 186
+
+    (63) if -> IF LP exp RP block ELSE block .
+
+    RCB             reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
+    VOID            reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
+    STATIC          reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
+    INT_TYPE        reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
+    REAL_TYPE       reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
+    BOOL_TYPE       reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
+    STRING_TYPE     reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
+    ID              reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
+    SEMICOLON       reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
+    INTEGER         reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
+    REAL            reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
+    TRUE            reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
+    FALSE           reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
+    STRING          reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
+    LP              reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
+    PRINT           reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
+    IF              reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
+    FOR             reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
+    WHILE           reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
+    RETURN          reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
+    BREAK           reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
+    CONTINUE        reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
+    SUBTRACTION     reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
+    NOT             reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
+    BITWISE_NOT     reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
+    ELSE            reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
+    ELSEIF          reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
 
 
 state 187
 
-    (69) for -> FOR LP ID IN exp TO . exp STEPS exp RP block
+    (65) if -> IF LP exp RP block elseifs ELSE . block
+    (37) block -> . LCB statements_list RCB
+    (38) block -> . statement
+    (41) statement -> . SEMICOLON
+    (42) statement -> . exp SEMICOLON
+    (43) statement -> . assignment
+    (44) statement -> . print
+    (45) statement -> . statement_var_dec
+    (46) statement -> . if
+    (47) statement -> . for
+    (48) statement -> . while
+    (49) statement -> . return
+    (50) statement -> . break
+    (51) statement -> . continue
+    (74) exp -> . INTEGER
+    (75) exp -> . REAL
+    (76) exp -> . TRUE
+    (77) exp -> . FALSE
+    (78) exp -> . STRING
+    (79) exp -> . lvalue
+    (80) exp -> . binary_operation
+    (81) exp -> . logical_operation
+    (82) exp -> . comparison_operation
+    (83) exp -> . bitwise_operation
+    (84) exp -> . unary_operation
+    (85) exp -> . LP exp RP
+    (86) exp -> . function_call
+    (52) assignment -> . lvalue ASSIGNMENT exp SEMICOLON
+    (57) print -> . PRINT LP STRING RP SEMICOLON
+    (58) statement_var_dec -> . return_type var_list SEMICOLON
+    (59) statement_var_dec -> . lvalue1 var_list SEMICOLON
+    (62) if -> . IF LP exp RP block
+    (63) if -> . IF LP exp RP block ELSE block
+    (64) if -> . IF LP exp RP block elseifs
+    (65) if -> . IF LP exp RP block elseifs ELSE block
+    (69) for -> . FOR LP ID IN exp TO exp STEPS exp RP block
+    (70) while -> . WHILE LP exp RP block
+    (71) return -> . RETURN exp SEMICOLON
+    (72) break -> . BREAK SEMICOLON
+    (73) continue -> . CONTINUE SEMICOLON
+    (53) lvalue -> . lvalue1
+    (54) lvalue -> . lvalue2
+    (87) binary_operation -> . exp ADDITION exp
+    (88) binary_operation -> . exp SUBTRACTION exp
+    (89) binary_operation -> . exp MULTIPLICATION exp
+    (90) binary_operation -> . exp DIVISION exp
+    (91) binary_operation -> . exp MODULO exp
+    (92) binary_operation -> . exp POWER exp
+    (93) binary_operation -> . exp SHIFT_LEFT exp
+    (94) binary_operation -> . exp SHIFT_RIGHT exp
+    (95) logical_operation -> . exp AND exp
+    (96) logical_operation -> . exp OR exp
+    (97) comparison_operation -> . exp LT exp
+    (98) comparison_operation -> . exp LE exp
+    (99) comparison_operation -> . exp GT exp
+    (100) comparison_operation -> . exp GE exp
+    (101) comparison_operation -> . exp EQ exp
+    (102) comparison_operation -> . exp NE exp
+    (103) bitwise_operation -> . exp BITWISE_AND exp
+    (104) bitwise_operation -> . exp BITWISE_OR exp
+    (105) unary_operation -> . SUBTRACTION exp
+    (106) unary_operation -> . NOT exp
+    (107) unary_operation -> . BITWISE_NOT exp
+    (108) function_call -> . lvalue2 function_call_body
+    (109) function_call -> . lvalue1 function_call_body
+    (18) return_type -> . INT_TYPE
+    (19) return_type -> . REAL_TYPE
+    (20) return_type -> . BOOL_TYPE
+    (21) return_type -> . STRING_TYPE
+    (56) lvalue1 -> . ID
+    (55) lvalue2 -> . ID DOT ID
+
+    LCB             shift and go to state 100
+    SEMICOLON       shift and go to state 102
+    INTEGER         shift and go to state 51
+    REAL            shift and go to state 52
+    TRUE            shift and go to state 53
+    FALSE           shift and go to state 54
+    STRING          shift and go to state 55
+    LP              shift and go to state 62
+    PRINT           shift and go to state 114
+    IF              shift and go to state 117
+    FOR             shift and go to state 118
+    WHILE           shift and go to state 119
+    RETURN          shift and go to state 120
+    BREAK           shift and go to state 121
+    CONTINUE        shift and go to state 122
+    SUBTRACTION     shift and go to state 66
+    NOT             shift and go to state 67
+    BITWISE_NOT     shift and go to state 68
+    INT_TYPE        shift and go to state 23
+    REAL_TYPE       shift and go to state 24
+    BOOL_TYPE       shift and go to state 25
+    STRING_TYPE     shift and go to state 26
+    ID              shift and go to state 49
+
+    exp                            shift and go to state 103
+    block                          shift and go to state 191
+    statement                      shift and go to state 101
+    assignment                     shift and go to state 104
+    print                          shift and go to state 105
+    statement_var_dec              shift and go to state 106
+    if                             shift and go to state 107
+    for                            shift and go to state 108
+    while                          shift and go to state 109
+    return                         shift and go to state 110
+    break                          shift and go to state 111
+    continue                       shift and go to state 112
+    lvalue                         shift and go to state 113
+    binary_operation               shift and go to state 57
+    logical_operation              shift and go to state 58
+    comparison_operation           shift and go to state 59
+    bitwise_operation              shift and go to state 60
+    unary_operation                shift and go to state 61
+    function_call                  shift and go to state 63
+    return_type                    shift and go to state 115
+    lvalue1                        shift and go to state 116
+    lvalue2                        shift and go to state 65
+
+state 188
+
+    (66) elseifs -> elseifs elseif .
+
+    ELSE            reduce using rule 66 (elseifs -> elseifs elseif .)
+    ELSEIF          reduce using rule 66 (elseifs -> elseifs elseif .)
+    RCB             reduce using rule 66 (elseifs -> elseifs elseif .)
+    VOID            reduce using rule 66 (elseifs -> elseifs elseif .)
+    STATIC          reduce using rule 66 (elseifs -> elseifs elseif .)
+    INT_TYPE        reduce using rule 66 (elseifs -> elseifs elseif .)
+    REAL_TYPE       reduce using rule 66 (elseifs -> elseifs elseif .)
+    BOOL_TYPE       reduce using rule 66 (elseifs -> elseifs elseif .)
+    STRING_TYPE     reduce using rule 66 (elseifs -> elseifs elseif .)
+    ID              reduce using rule 66 (elseifs -> elseifs elseif .)
+    SEMICOLON       reduce using rule 66 (elseifs -> elseifs elseif .)
+    INTEGER         reduce using rule 66 (elseifs -> elseifs elseif .)
+    REAL            reduce using rule 66 (elseifs -> elseifs elseif .)
+    TRUE            reduce using rule 66 (elseifs -> elseifs elseif .)
+    FALSE           reduce using rule 66 (elseifs -> elseifs elseif .)
+    STRING          reduce using rule 66 (elseifs -> elseifs elseif .)
+    LP              reduce using rule 66 (elseifs -> elseifs elseif .)
+    PRINT           reduce using rule 66 (elseifs -> elseifs elseif .)
+    IF              reduce using rule 66 (elseifs -> elseifs elseif .)
+    FOR             reduce using rule 66 (elseifs -> elseifs elseif .)
+    WHILE           reduce using rule 66 (elseifs -> elseifs elseif .)
+    RETURN          reduce using rule 66 (elseifs -> elseifs elseif .)
+    BREAK           reduce using rule 66 (elseifs -> elseifs elseif .)
+    CONTINUE        reduce using rule 66 (elseifs -> elseifs elseif .)
+    SUBTRACTION     reduce using rule 66 (elseifs -> elseifs elseif .)
+    NOT             reduce using rule 66 (elseifs -> elseifs elseif .)
+    BITWISE_NOT     reduce using rule 66 (elseifs -> elseifs elseif .)
+
+
+state 189
+
+    (68) elseif -> ELSEIF LP . exp RP block
     (74) exp -> . INTEGER
     (75) exp -> . REAL
     (76) exp -> . TRUE
@@ -7157,42 +7236,194 @@ state 187
     lvalue1                        shift and go to state 64
     lvalue2                        shift and go to state 65
 
-state 188
+state 190
 
-    (63) if -> IF LP exp RP block ELSE block .
+    (69) for -> FOR LP ID IN exp TO exp . STEPS exp RP block
+    (87) binary_operation -> exp . ADDITION exp
+    (88) binary_operation -> exp . SUBTRACTION exp
+    (89) binary_operation -> exp . MULTIPLICATION exp
+    (90) binary_operation -> exp . DIVISION exp
+    (91) binary_operation -> exp . MODULO exp
+    (92) binary_operation -> exp . POWER exp
+    (93) binary_operation -> exp . SHIFT_LEFT exp
+    (94) binary_operation -> exp . SHIFT_RIGHT exp
+    (95) logical_operation -> exp . AND exp
+    (96) logical_operation -> exp . OR exp
+    (97) comparison_operation -> exp . LT exp
+    (98) comparison_operation -> exp . LE exp
+    (99) comparison_operation -> exp . GT exp
+    (100) comparison_operation -> exp . GE exp
+    (101) comparison_operation -> exp . EQ exp
+    (102) comparison_operation -> exp . NE exp
+    (103) bitwise_operation -> exp . BITWISE_AND exp
+    (104) bitwise_operation -> exp . BITWISE_OR exp
 
-    RCB             reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
-    VOID            reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
-    STATIC          reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
-    INT_TYPE        reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
-    REAL_TYPE       reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
-    BOOL_TYPE       reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
-    STRING_TYPE     reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
-    ID              reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
-    SEMICOLON       reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
-    INTEGER         reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
-    REAL            reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
-    TRUE            reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
-    FALSE           reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
-    STRING          reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
-    LP              reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
-    PRINT           reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
-    IF              reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
-    FOR             reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
-    WHILE           reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
-    RETURN          reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
-    BREAK           reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
-    CONTINUE        reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
-    SUBTRACTION     reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
-    NOT             reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
-    BITWISE_NOT     reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
-    ELSE            reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
-    ELSEIF          reduce using rule 63 (if -> IF LP exp RP block ELSE block .)
+    STEPS           shift and go to state 193
+    ADDITION        shift and go to state 74
+    SUBTRACTION     shift and go to state 75
+    MULTIPLICATION  shift and go to state 76
+    DIVISION        shift and go to state 77
+    MODULO          shift and go to state 78
+    POWER           shift and go to state 79
+    SHIFT_LEFT      shift and go to state 80
+    SHIFT_RIGHT     shift and go to state 81
+    AND             shift and go to state 82
+    OR              shift and go to state 83
+    LT              shift and go to state 84
+    LE              shift and go to state 85
+    GT              shift and go to state 86
+    GE              shift and go to state 87
+    EQ              shift and go to state 88
+    NE              shift and go to state 89
+    BITWISE_AND     shift and go to state 90
+    BITWISE_OR      shift and go to state 91
 
 
-state 189
+state 191
 
-    (65) if -> IF LP exp RP block elseifs ELSE . block
+    (65) if -> IF LP exp RP block elseifs ELSE block .
+
+    RCB             reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
+    VOID            reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
+    STATIC          reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
+    INT_TYPE        reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
+    REAL_TYPE       reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
+    BOOL_TYPE       reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
+    STRING_TYPE     reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
+    ID              reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
+    SEMICOLON       reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
+    INTEGER         reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
+    REAL            reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
+    TRUE            reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
+    FALSE           reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
+    STRING          reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
+    LP              reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
+    PRINT           reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
+    IF              reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
+    FOR             reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
+    WHILE           reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
+    RETURN          reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
+    BREAK           reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
+    CONTINUE        reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
+    SUBTRACTION     reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
+    NOT             reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
+    BITWISE_NOT     reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
+    ELSE            reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
+    ELSEIF          reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
+
+
+state 192
+
+    (68) elseif -> ELSEIF LP exp . RP block
+    (87) binary_operation -> exp . ADDITION exp
+    (88) binary_operation -> exp . SUBTRACTION exp
+    (89) binary_operation -> exp . MULTIPLICATION exp
+    (90) binary_operation -> exp . DIVISION exp
+    (91) binary_operation -> exp . MODULO exp
+    (92) binary_operation -> exp . POWER exp
+    (93) binary_operation -> exp . SHIFT_LEFT exp
+    (94) binary_operation -> exp . SHIFT_RIGHT exp
+    (95) logical_operation -> exp . AND exp
+    (96) logical_operation -> exp . OR exp
+    (97) comparison_operation -> exp . LT exp
+    (98) comparison_operation -> exp . LE exp
+    (99) comparison_operation -> exp . GT exp
+    (100) comparison_operation -> exp . GE exp
+    (101) comparison_operation -> exp . EQ exp
+    (102) comparison_operation -> exp . NE exp
+    (103) bitwise_operation -> exp . BITWISE_AND exp
+    (104) bitwise_operation -> exp . BITWISE_OR exp
+
+    RP              shift and go to state 194
+    ADDITION        shift and go to state 74
+    SUBTRACTION     shift and go to state 75
+    MULTIPLICATION  shift and go to state 76
+    DIVISION        shift and go to state 77
+    MODULO          shift and go to state 78
+    POWER           shift and go to state 79
+    SHIFT_LEFT      shift and go to state 80
+    SHIFT_RIGHT     shift and go to state 81
+    AND             shift and go to state 82
+    OR              shift and go to state 83
+    LT              shift and go to state 84
+    LE              shift and go to state 85
+    GT              shift and go to state 86
+    GE              shift and go to state 87
+    EQ              shift and go to state 88
+    NE              shift and go to state 89
+    BITWISE_AND     shift and go to state 90
+    BITWISE_OR      shift and go to state 91
+
+
+state 193
+
+    (69) for -> FOR LP ID IN exp TO exp STEPS . exp RP block
+    (74) exp -> . INTEGER
+    (75) exp -> . REAL
+    (76) exp -> . TRUE
+    (77) exp -> . FALSE
+    (78) exp -> . STRING
+    (79) exp -> . lvalue
+    (80) exp -> . binary_operation
+    (81) exp -> . logical_operation
+    (82) exp -> . comparison_operation
+    (83) exp -> . bitwise_operation
+    (84) exp -> . unary_operation
+    (85) exp -> . LP exp RP
+    (86) exp -> . function_call
+    (53) lvalue -> . lvalue1
+    (54) lvalue -> . lvalue2
+    (87) binary_operation -> . exp ADDITION exp
+    (88) binary_operation -> . exp SUBTRACTION exp
+    (89) binary_operation -> . exp MULTIPLICATION exp
+    (90) binary_operation -> . exp DIVISION exp
+    (91) binary_operation -> . exp MODULO exp
+    (92) binary_operation -> . exp POWER exp
+    (93) binary_operation -> . exp SHIFT_LEFT exp
+    (94) binary_operation -> . exp SHIFT_RIGHT exp
+    (95) logical_operation -> . exp AND exp
+    (96) logical_operation -> . exp OR exp
+    (97) comparison_operation -> . exp LT exp
+    (98) comparison_operation -> . exp LE exp
+    (99) comparison_operation -> . exp GT exp
+    (100) comparison_operation -> . exp GE exp
+    (101) comparison_operation -> . exp EQ exp
+    (102) comparison_operation -> . exp NE exp
+    (103) bitwise_operation -> . exp BITWISE_AND exp
+    (104) bitwise_operation -> . exp BITWISE_OR exp
+    (105) unary_operation -> . SUBTRACTION exp
+    (106) unary_operation -> . NOT exp
+    (107) unary_operation -> . BITWISE_NOT exp
+    (108) function_call -> . lvalue2 function_call_body
+    (109) function_call -> . lvalue1 function_call_body
+    (56) lvalue1 -> . ID
+    (55) lvalue2 -> . ID DOT ID
+
+    INTEGER         shift and go to state 51
+    REAL            shift and go to state 52
+    TRUE            shift and go to state 53
+    FALSE           shift and go to state 54
+    STRING          shift and go to state 55
+    LP              shift and go to state 62
+    SUBTRACTION     shift and go to state 66
+    NOT             shift and go to state 67
+    BITWISE_NOT     shift and go to state 68
+    ID              shift and go to state 49
+
+    exp                            shift and go to state 195
+    lvalue                         shift and go to state 56
+    binary_operation               shift and go to state 57
+    logical_operation              shift and go to state 58
+    comparison_operation           shift and go to state 59
+    bitwise_operation              shift and go to state 60
+    unary_operation                shift and go to state 61
+    function_call                  shift and go to state 63
+    lvalue1                        shift and go to state 64
+    lvalue2                        shift and go to state 65
+
+state 194
+
+    (68) elseif -> ELSEIF LP exp RP . block
     (37) block -> . LCB statements_list RCB
     (38) block -> . statement
     (41) statement -> . SEMICOLON
@@ -7223,7 +7454,7 @@ state 189
     (57) print -> . PRINT LP STRING RP SEMICOLON
     (58) statement_var_dec -> . return_type var_list SEMICOLON
     (59) statement_var_dec -> . lvalue1 var_list SEMICOLON
-    (62) if -> . IF LP exp RP m block
+    (62) if -> . IF LP exp RP block
     (63) if -> . IF LP exp RP block ELSE block
     (64) if -> . IF LP exp RP block elseifs
     (65) if -> . IF LP exp RP block elseifs ELSE block
@@ -7289,7 +7520,7 @@ state 189
     ID              shift and go to state 49
 
     exp                            shift and go to state 103
-    block                          shift and go to state 193
+    block                          shift and go to state 196
     statement                      shift and go to state 101
     assignment                     shift and go to state 104
     print                          shift and go to state 105
@@ -7311,293 +7542,85 @@ state 189
     lvalue1                        shift and go to state 116
     lvalue2                        shift and go to state 65
 
-state 190
-
-    (66) elseifs -> elseifs elseif .
-
-    RCB             reduce using rule 66 (elseifs -> elseifs elseif .)
-    VOID            reduce using rule 66 (elseifs -> elseifs elseif .)
-    STATIC          reduce using rule 66 (elseifs -> elseifs elseif .)
-    INT_TYPE        reduce using rule 66 (elseifs -> elseifs elseif .)
-    REAL_TYPE       reduce using rule 66 (elseifs -> elseifs elseif .)
-    BOOL_TYPE       reduce using rule 66 (elseifs -> elseifs elseif .)
-    STRING_TYPE     reduce using rule 66 (elseifs -> elseifs elseif .)
-    ID              reduce using rule 66 (elseifs -> elseifs elseif .)
-    SEMICOLON       reduce using rule 66 (elseifs -> elseifs elseif .)
-    INTEGER         reduce using rule 66 (elseifs -> elseifs elseif .)
-    REAL            reduce using rule 66 (elseifs -> elseifs elseif .)
-    TRUE            reduce using rule 66 (elseifs -> elseifs elseif .)
-    FALSE           reduce using rule 66 (elseifs -> elseifs elseif .)
-    STRING          reduce using rule 66 (elseifs -> elseifs elseif .)
-    LP              reduce using rule 66 (elseifs -> elseifs elseif .)
-    PRINT           reduce using rule 66 (elseifs -> elseifs elseif .)
-    IF              reduce using rule 66 (elseifs -> elseifs elseif .)
-    FOR             reduce using rule 66 (elseifs -> elseifs elseif .)
-    WHILE           reduce using rule 66 (elseifs -> elseifs elseif .)
-    RETURN          reduce using rule 66 (elseifs -> elseifs elseif .)
-    BREAK           reduce using rule 66 (elseifs -> elseifs elseif .)
-    CONTINUE        reduce using rule 66 (elseifs -> elseifs elseif .)
-    SUBTRACTION     reduce using rule 66 (elseifs -> elseifs elseif .)
-    NOT             reduce using rule 66 (elseifs -> elseifs elseif .)
-    BITWISE_NOT     reduce using rule 66 (elseifs -> elseifs elseif .)
-    ELSE            reduce using rule 66 (elseifs -> elseifs elseif .)
-    ELSEIF          reduce using rule 66 (elseifs -> elseifs elseif .)
-
-
-state 191
-
-    (68) elseif -> ELSEIF LP . exp RP block
-    (74) exp -> . INTEGER
-    (75) exp -> . REAL
-    (76) exp -> . TRUE
-    (77) exp -> . FALSE
-    (78) exp -> . STRING
-    (79) exp -> . lvalue
-    (80) exp -> . binary_operation
-    (81) exp -> . logical_operation
-    (82) exp -> . comparison_operation
-    (83) exp -> . bitwise_operation
-    (84) exp -> . unary_operation
-    (85) exp -> . LP exp RP
-    (86) exp -> . function_call
-    (53) lvalue -> . lvalue1
-    (54) lvalue -> . lvalue2
-    (87) binary_operation -> . exp ADDITION exp
-    (88) binary_operation -> . exp SUBTRACTION exp
-    (89) binary_operation -> . exp MULTIPLICATION exp
-    (90) binary_operation -> . exp DIVISION exp
-    (91) binary_operation -> . exp MODULO exp
-    (92) binary_operation -> . exp POWER exp
-    (93) binary_operation -> . exp SHIFT_LEFT exp
-    (94) binary_operation -> . exp SHIFT_RIGHT exp
-    (95) logical_operation -> . exp AND exp
-    (96) logical_operation -> . exp OR exp
-    (97) comparison_operation -> . exp LT exp
-    (98) comparison_operation -> . exp LE exp
-    (99) comparison_operation -> . exp GT exp
-    (100) comparison_operation -> . exp GE exp
-    (101) comparison_operation -> . exp EQ exp
-    (102) comparison_operation -> . exp NE exp
-    (103) bitwise_operation -> . exp BITWISE_AND exp
-    (104) bitwise_operation -> . exp BITWISE_OR exp
-    (105) unary_operation -> . SUBTRACTION exp
-    (106) unary_operation -> . NOT exp
-    (107) unary_operation -> . BITWISE_NOT exp
-    (108) function_call -> . lvalue2 function_call_body
-    (109) function_call -> . lvalue1 function_call_body
-    (56) lvalue1 -> . ID
-    (55) lvalue2 -> . ID DOT ID
-
-    INTEGER         shift and go to state 51
-    REAL            shift and go to state 52
-    TRUE            shift and go to state 53
-    FALSE           shift and go to state 54
-    STRING          shift and go to state 55
-    LP              shift and go to state 62
-    SUBTRACTION     shift and go to state 66
-    NOT             shift and go to state 67
-    BITWISE_NOT     shift and go to state 68
-    ID              shift and go to state 49
-
-    exp                            shift and go to state 194
-    lvalue                         shift and go to state 56
-    binary_operation               shift and go to state 57
-    logical_operation              shift and go to state 58
-    comparison_operation           shift and go to state 59
-    bitwise_operation              shift and go to state 60
-    unary_operation                shift and go to state 61
-    function_call                  shift and go to state 63
-    lvalue1                        shift and go to state 64
-    lvalue2                        shift and go to state 65
-
-state 192
-
-    (69) for -> FOR LP ID IN exp TO exp . STEPS exp RP block
-    (87) binary_operation -> exp . ADDITION exp
-    (88) binary_operation -> exp . SUBTRACTION exp
-    (89) binary_operation -> exp . MULTIPLICATION exp
-    (90) binary_operation -> exp . DIVISION exp
-    (91) binary_operation -> exp . MODULO exp
-    (92) binary_operation -> exp . POWER exp
-    (93) binary_operation -> exp . SHIFT_LEFT exp
-    (94) binary_operation -> exp . SHIFT_RIGHT exp
-    (95) logical_operation -> exp . AND exp
-    (96) logical_operation -> exp . OR exp
-    (97) comparison_operation -> exp . LT exp
-    (98) comparison_operation -> exp . LE exp
-    (99) comparison_operation -> exp . GT exp
-    (100) comparison_operation -> exp . GE exp
-    (101) comparison_operation -> exp . EQ exp
-    (102) comparison_operation -> exp . NE exp
-    (103) bitwise_operation -> exp . BITWISE_AND exp
-    (104) bitwise_operation -> exp . BITWISE_OR exp
-
-    STEPS           shift and go to state 195
-    ADDITION        shift and go to state 74
-    SUBTRACTION     shift and go to state 75
-    MULTIPLICATION  shift and go to state 76
-    DIVISION        shift and go to state 77
-    MODULO          shift and go to state 78
-    POWER           shift and go to state 79
-    SHIFT_LEFT      shift and go to state 80
-    SHIFT_RIGHT     shift and go to state 81
-    AND             shift and go to state 82
-    OR              shift and go to state 83
-    LT              shift and go to state 84
-    LE              shift and go to state 85
-    GT              shift and go to state 86
-    GE              shift and go to state 87
-    EQ              shift and go to state 88
-    NE              shift and go to state 89
-    BITWISE_AND     shift and go to state 90
-    BITWISE_OR      shift and go to state 91
-
-
-state 193
-
-    (65) if -> IF LP exp RP block elseifs ELSE block .
-
-    RCB             reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
-    VOID            reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
-    STATIC          reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
-    INT_TYPE        reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
-    REAL_TYPE       reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
-    BOOL_TYPE       reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
-    STRING_TYPE     reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
-    ID              reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
-    SEMICOLON       reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
-    INTEGER         reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
-    REAL            reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
-    TRUE            reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
-    FALSE           reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
-    STRING          reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
-    LP              reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
-    PRINT           reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
-    IF              reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
-    FOR             reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
-    WHILE           reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
-    RETURN          reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
-    BREAK           reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
-    CONTINUE        reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
-    SUBTRACTION     reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
-    NOT             reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
-    BITWISE_NOT     reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
-    ELSE            reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
-    ELSEIF          reduce using rule 65 (if -> IF LP exp RP block elseifs ELSE block .)
-
-
-state 194
-
-    (68) elseif -> ELSEIF LP exp . RP block
-    (87) binary_operation -> exp . ADDITION exp
-    (88) binary_operation -> exp . SUBTRACTION exp
-    (89) binary_operation -> exp . MULTIPLICATION exp
-    (90) binary_operation -> exp . DIVISION exp
-    (91) binary_operation -> exp . MODULO exp
-    (92) binary_operation -> exp . POWER exp
-    (93) binary_operation -> exp . SHIFT_LEFT exp
-    (94) binary_operation -> exp . SHIFT_RIGHT exp
-    (95) logical_operation -> exp . AND exp
-    (96) logical_operation -> exp . OR exp
-    (97) comparison_operation -> exp . LT exp
-    (98) comparison_operation -> exp . LE exp
-    (99) comparison_operation -> exp . GT exp
-    (100) comparison_operation -> exp . GE exp
-    (101) comparison_operation -> exp . EQ exp
-    (102) comparison_operation -> exp . NE exp
-    (103) bitwise_operation -> exp . BITWISE_AND exp
-    (104) bitwise_operation -> exp . BITWISE_OR exp
-
-    RP              shift and go to state 196
-    ADDITION        shift and go to state 74
-    SUBTRACTION     shift and go to state 75
-    MULTIPLICATION  shift and go to state 76
-    DIVISION        shift and go to state 77
-    MODULO          shift and go to state 78
-    POWER           shift and go to state 79
-    SHIFT_LEFT      shift and go to state 80
-    SHIFT_RIGHT     shift and go to state 81
-    AND             shift and go to state 82
-    OR              shift and go to state 83
-    LT              shift and go to state 84
-    LE              shift and go to state 85
-    GT              shift and go to state 86
-    GE              shift and go to state 87
-    EQ              shift and go to state 88
-    NE              shift and go to state 89
-    BITWISE_AND     shift and go to state 90
-    BITWISE_OR      shift and go to state 91
-
-
 state 195
 
-    (69) for -> FOR LP ID IN exp TO exp STEPS . exp RP block
-    (74) exp -> . INTEGER
-    (75) exp -> . REAL
-    (76) exp -> . TRUE
-    (77) exp -> . FALSE
-    (78) exp -> . STRING
-    (79) exp -> . lvalue
-    (80) exp -> . binary_operation
-    (81) exp -> . logical_operation
-    (82) exp -> . comparison_operation
-    (83) exp -> . bitwise_operation
-    (84) exp -> . unary_operation
-    (85) exp -> . LP exp RP
-    (86) exp -> . function_call
-    (53) lvalue -> . lvalue1
-    (54) lvalue -> . lvalue2
-    (87) binary_operation -> . exp ADDITION exp
-    (88) binary_operation -> . exp SUBTRACTION exp
-    (89) binary_operation -> . exp MULTIPLICATION exp
-    (90) binary_operation -> . exp DIVISION exp
-    (91) binary_operation -> . exp MODULO exp
-    (92) binary_operation -> . exp POWER exp
-    (93) binary_operation -> . exp SHIFT_LEFT exp
-    (94) binary_operation -> . exp SHIFT_RIGHT exp
-    (95) logical_operation -> . exp AND exp
-    (96) logical_operation -> . exp OR exp
-    (97) comparison_operation -> . exp LT exp
-    (98) comparison_operation -> . exp LE exp
-    (99) comparison_operation -> . exp GT exp
-    (100) comparison_operation -> . exp GE exp
-    (101) comparison_operation -> . exp EQ exp
-    (102) comparison_operation -> . exp NE exp
-    (103) bitwise_operation -> . exp BITWISE_AND exp
-    (104) bitwise_operation -> . exp BITWISE_OR exp
-    (105) unary_operation -> . SUBTRACTION exp
-    (106) unary_operation -> . NOT exp
-    (107) unary_operation -> . BITWISE_NOT exp
-    (108) function_call -> . lvalue2 function_call_body
-    (109) function_call -> . lvalue1 function_call_body
-    (56) lvalue1 -> . ID
-    (55) lvalue2 -> . ID DOT ID
+    (69) for -> FOR LP ID IN exp TO exp STEPS exp . RP block
+    (87) binary_operation -> exp . ADDITION exp
+    (88) binary_operation -> exp . SUBTRACTION exp
+    (89) binary_operation -> exp . MULTIPLICATION exp
+    (90) binary_operation -> exp . DIVISION exp
+    (91) binary_operation -> exp . MODULO exp
+    (92) binary_operation -> exp . POWER exp
+    (93) binary_operation -> exp . SHIFT_LEFT exp
+    (94) binary_operation -> exp . SHIFT_RIGHT exp
+    (95) logical_operation -> exp . AND exp
+    (96) logical_operation -> exp . OR exp
+    (97) comparison_operation -> exp . LT exp
+    (98) comparison_operation -> exp . LE exp
+    (99) comparison_operation -> exp . GT exp
+    (100) comparison_operation -> exp . GE exp
+    (101) comparison_operation -> exp . EQ exp
+    (102) comparison_operation -> exp . NE exp
+    (103) bitwise_operation -> exp . BITWISE_AND exp
+    (104) bitwise_operation -> exp . BITWISE_OR exp
 
-    INTEGER         shift and go to state 51
-    REAL            shift and go to state 52
-    TRUE            shift and go to state 53
-    FALSE           shift and go to state 54
-    STRING          shift and go to state 55
-    LP              shift and go to state 62
-    SUBTRACTION     shift and go to state 66
-    NOT             shift and go to state 67
-    BITWISE_NOT     shift and go to state 68
-    ID              shift and go to state 49
+    RP              shift and go to state 197
+    ADDITION        shift and go to state 74
+    SUBTRACTION     shift and go to state 75
+    MULTIPLICATION  shift and go to state 76
+    DIVISION        shift and go to state 77
+    MODULO          shift and go to state 78
+    POWER           shift and go to state 79
+    SHIFT_LEFT      shift and go to state 80
+    SHIFT_RIGHT     shift and go to state 81
+    AND             shift and go to state 82
+    OR              shift and go to state 83
+    LT              shift and go to state 84
+    LE              shift and go to state 85
+    GT              shift and go to state 86
+    GE              shift and go to state 87
+    EQ              shift and go to state 88
+    NE              shift and go to state 89
+    BITWISE_AND     shift and go to state 90
+    BITWISE_OR      shift and go to state 91
 
-    exp                            shift and go to state 197
-    lvalue                         shift and go to state 56
-    binary_operation               shift and go to state 57
-    logical_operation              shift and go to state 58
-    comparison_operation           shift and go to state 59
-    bitwise_operation              shift and go to state 60
-    unary_operation                shift and go to state 61
-    function_call                  shift and go to state 63
-    lvalue1                        shift and go to state 64
-    lvalue2                        shift and go to state 65
 
 state 196
 
-    (68) elseif -> ELSEIF LP exp RP . block
+    (68) elseif -> ELSEIF LP exp RP block .
+
+    ELSE            reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
+    ELSEIF          reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
+    RCB             reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
+    VOID            reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
+    STATIC          reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
+    INT_TYPE        reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
+    REAL_TYPE       reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
+    BOOL_TYPE       reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
+    STRING_TYPE     reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
+    ID              reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
+    SEMICOLON       reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
+    INTEGER         reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
+    REAL            reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
+    TRUE            reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
+    FALSE           reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
+    STRING          reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
+    LP              reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
+    PRINT           reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
+    IF              reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
+    FOR             reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
+    WHILE           reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
+    RETURN          reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
+    BREAK           reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
+    CONTINUE        reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
+    SUBTRACTION     reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
+    NOT             reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
+    BITWISE_NOT     reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
+
+
+state 197
+
+    (69) for -> FOR LP ID IN exp TO exp STEPS exp RP . block
     (37) block -> . LCB statements_list RCB
     (38) block -> . statement
     (41) statement -> . SEMICOLON
@@ -7628,7 +7651,7 @@ state 196
     (57) print -> . PRINT LP STRING RP SEMICOLON
     (58) statement_var_dec -> . return_type var_list SEMICOLON
     (59) statement_var_dec -> . lvalue1 var_list SEMICOLON
-    (62) if -> . IF LP exp RP m block
+    (62) if -> . IF LP exp RP block
     (63) if -> . IF LP exp RP block ELSE block
     (64) if -> . IF LP exp RP block elseifs
     (65) if -> . IF LP exp RP block elseifs ELSE block
@@ -7716,204 +7739,7 @@ state 196
     lvalue1                        shift and go to state 116
     lvalue2                        shift and go to state 65
 
-state 197
-
-    (69) for -> FOR LP ID IN exp TO exp STEPS exp . RP block
-    (87) binary_operation -> exp . ADDITION exp
-    (88) binary_operation -> exp . SUBTRACTION exp
-    (89) binary_operation -> exp . MULTIPLICATION exp
-    (90) binary_operation -> exp . DIVISION exp
-    (91) binary_operation -> exp . MODULO exp
-    (92) binary_operation -> exp . POWER exp
-    (93) binary_operation -> exp . SHIFT_LEFT exp
-    (94) binary_operation -> exp . SHIFT_RIGHT exp
-    (95) logical_operation -> exp . AND exp
-    (96) logical_operation -> exp . OR exp
-    (97) comparison_operation -> exp . LT exp
-    (98) comparison_operation -> exp . LE exp
-    (99) comparison_operation -> exp . GT exp
-    (100) comparison_operation -> exp . GE exp
-    (101) comparison_operation -> exp . EQ exp
-    (102) comparison_operation -> exp . NE exp
-    (103) bitwise_operation -> exp . BITWISE_AND exp
-    (104) bitwise_operation -> exp . BITWISE_OR exp
-
-    RP              shift and go to state 199
-    ADDITION        shift and go to state 74
-    SUBTRACTION     shift and go to state 75
-    MULTIPLICATION  shift and go to state 76
-    DIVISION        shift and go to state 77
-    MODULO          shift and go to state 78
-    POWER           shift and go to state 79
-    SHIFT_LEFT      shift and go to state 80
-    SHIFT_RIGHT     shift and go to state 81
-    AND             shift and go to state 82
-    OR              shift and go to state 83
-    LT              shift and go to state 84
-    LE              shift and go to state 85
-    GT              shift and go to state 86
-    GE              shift and go to state 87
-    EQ              shift and go to state 88
-    NE              shift and go to state 89
-    BITWISE_AND     shift and go to state 90
-    BITWISE_OR      shift and go to state 91
-
-
 state 198
-
-    (68) elseif -> ELSEIF LP exp RP block .
-
-    RCB             reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
-    VOID            reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
-    STATIC          reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
-    INT_TYPE        reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
-    REAL_TYPE       reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
-    BOOL_TYPE       reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
-    STRING_TYPE     reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
-    ID              reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
-    SEMICOLON       reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
-    INTEGER         reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
-    REAL            reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
-    TRUE            reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
-    FALSE           reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
-    STRING          reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
-    LP              reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
-    PRINT           reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
-    IF              reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
-    FOR             reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
-    WHILE           reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
-    RETURN          reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
-    BREAK           reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
-    CONTINUE        reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
-    SUBTRACTION     reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
-    NOT             reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
-    BITWISE_NOT     reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
-    ELSE            reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
-    ELSEIF          reduce using rule 68 (elseif -> ELSEIF LP exp RP block .)
-
-
-state 199
-
-    (69) for -> FOR LP ID IN exp TO exp STEPS exp RP . block
-    (37) block -> . LCB statements_list RCB
-    (38) block -> . statement
-    (41) statement -> . SEMICOLON
-    (42) statement -> . exp SEMICOLON
-    (43) statement -> . assignment
-    (44) statement -> . print
-    (45) statement -> . statement_var_dec
-    (46) statement -> . if
-    (47) statement -> . for
-    (48) statement -> . while
-    (49) statement -> . return
-    (50) statement -> . break
-    (51) statement -> . continue
-    (74) exp -> . INTEGER
-    (75) exp -> . REAL
-    (76) exp -> . TRUE
-    (77) exp -> . FALSE
-    (78) exp -> . STRING
-    (79) exp -> . lvalue
-    (80) exp -> . binary_operation
-    (81) exp -> . logical_operation
-    (82) exp -> . comparison_operation
-    (83) exp -> . bitwise_operation
-    (84) exp -> . unary_operation
-    (85) exp -> . LP exp RP
-    (86) exp -> . function_call
-    (52) assignment -> . lvalue ASSIGNMENT exp SEMICOLON
-    (57) print -> . PRINT LP STRING RP SEMICOLON
-    (58) statement_var_dec -> . return_type var_list SEMICOLON
-    (59) statement_var_dec -> . lvalue1 var_list SEMICOLON
-    (62) if -> . IF LP exp RP m block
-    (63) if -> . IF LP exp RP block ELSE block
-    (64) if -> . IF LP exp RP block elseifs
-    (65) if -> . IF LP exp RP block elseifs ELSE block
-    (69) for -> . FOR LP ID IN exp TO exp STEPS exp RP block
-    (70) while -> . WHILE LP exp RP block
-    (71) return -> . RETURN exp SEMICOLON
-    (72) break -> . BREAK SEMICOLON
-    (73) continue -> . CONTINUE SEMICOLON
-    (53) lvalue -> . lvalue1
-    (54) lvalue -> . lvalue2
-    (87) binary_operation -> . exp ADDITION exp
-    (88) binary_operation -> . exp SUBTRACTION exp
-    (89) binary_operation -> . exp MULTIPLICATION exp
-    (90) binary_operation -> . exp DIVISION exp
-    (91) binary_operation -> . exp MODULO exp
-    (92) binary_operation -> . exp POWER exp
-    (93) binary_operation -> . exp SHIFT_LEFT exp
-    (94) binary_operation -> . exp SHIFT_RIGHT exp
-    (95) logical_operation -> . exp AND exp
-    (96) logical_operation -> . exp OR exp
-    (97) comparison_operation -> . exp LT exp
-    (98) comparison_operation -> . exp LE exp
-    (99) comparison_operation -> . exp GT exp
-    (100) comparison_operation -> . exp GE exp
-    (101) comparison_operation -> . exp EQ exp
-    (102) comparison_operation -> . exp NE exp
-    (103) bitwise_operation -> . exp BITWISE_AND exp
-    (104) bitwise_operation -> . exp BITWISE_OR exp
-    (105) unary_operation -> . SUBTRACTION exp
-    (106) unary_operation -> . NOT exp
-    (107) unary_operation -> . BITWISE_NOT exp
-    (108) function_call -> . lvalue2 function_call_body
-    (109) function_call -> . lvalue1 function_call_body
-    (18) return_type -> . INT_TYPE
-    (19) return_type -> . REAL_TYPE
-    (20) return_type -> . BOOL_TYPE
-    (21) return_type -> . STRING_TYPE
-    (56) lvalue1 -> . ID
-    (55) lvalue2 -> . ID DOT ID
-
-    LCB             shift and go to state 100
-    SEMICOLON       shift and go to state 102
-    INTEGER         shift and go to state 51
-    REAL            shift and go to state 52
-    TRUE            shift and go to state 53
-    FALSE           shift and go to state 54
-    STRING          shift and go to state 55
-    LP              shift and go to state 62
-    PRINT           shift and go to state 114
-    IF              shift and go to state 117
-    FOR             shift and go to state 118
-    WHILE           shift and go to state 119
-    RETURN          shift and go to state 120
-    BREAK           shift and go to state 121
-    CONTINUE        shift and go to state 122
-    SUBTRACTION     shift and go to state 66
-    NOT             shift and go to state 67
-    BITWISE_NOT     shift and go to state 68
-    INT_TYPE        shift and go to state 23
-    REAL_TYPE       shift and go to state 24
-    BOOL_TYPE       shift and go to state 25
-    STRING_TYPE     shift and go to state 26
-    ID              shift and go to state 49
-
-    exp                            shift and go to state 103
-    block                          shift and go to state 200
-    statement                      shift and go to state 101
-    assignment                     shift and go to state 104
-    print                          shift and go to state 105
-    statement_var_dec              shift and go to state 106
-    if                             shift and go to state 107
-    for                            shift and go to state 108
-    while                          shift and go to state 109
-    return                         shift and go to state 110
-    break                          shift and go to state 111
-    continue                       shift and go to state 112
-    lvalue                         shift and go to state 113
-    binary_operation               shift and go to state 57
-    logical_operation              shift and go to state 58
-    comparison_operation           shift and go to state 59
-    bitwise_operation              shift and go to state 60
-    unary_operation                shift and go to state 61
-    function_call                  shift and go to state 63
-    return_type                    shift and go to state 115
-    lvalue1                        shift and go to state 116
-    lvalue2                        shift and go to state 65
-
-state 200
 
     (69) for -> FOR LP ID IN exp TO exp STEPS exp RP block .
 
@@ -7945,29 +7771,3 @@ state 200
     ELSE            reduce using rule 69 (for -> FOR LP ID IN exp TO exp STEPS exp RP block .)
     ELSEIF          reduce using rule 69 (for -> FOR LP ID IN exp TO exp STEPS exp RP block .)
 
-WARNING: 
-WARNING: Conflicts:
-WARNING: 
-WARNING: shift/reduce conflict for LCB in state 174 resolved as shift
-WARNING: shift/reduce conflict for SEMICOLON in state 174 resolved as shift
-WARNING: shift/reduce conflict for INTEGER in state 174 resolved as shift
-WARNING: shift/reduce conflict for REAL in state 174 resolved as shift
-WARNING: shift/reduce conflict for TRUE in state 174 resolved as shift
-WARNING: shift/reduce conflict for FALSE in state 174 resolved as shift
-WARNING: shift/reduce conflict for STRING in state 174 resolved as shift
-WARNING: shift/reduce conflict for LP in state 174 resolved as shift
-WARNING: shift/reduce conflict for PRINT in state 174 resolved as shift
-WARNING: shift/reduce conflict for IF in state 174 resolved as shift
-WARNING: shift/reduce conflict for FOR in state 174 resolved as shift
-WARNING: shift/reduce conflict for WHILE in state 174 resolved as shift
-WARNING: shift/reduce conflict for RETURN in state 174 resolved as shift
-WARNING: shift/reduce conflict for BREAK in state 174 resolved as shift
-WARNING: shift/reduce conflict for CONTINUE in state 174 resolved as shift
-WARNING: shift/reduce conflict for SUBTRACTION in state 174 resolved as shift
-WARNING: shift/reduce conflict for NOT in state 174 resolved as shift
-WARNING: shift/reduce conflict for BITWISE_NOT in state 174 resolved as shift
-WARNING: shift/reduce conflict for INT_TYPE in state 174 resolved as shift
-WARNING: shift/reduce conflict for REAL_TYPE in state 174 resolved as shift
-WARNING: shift/reduce conflict for BOOL_TYPE in state 174 resolved as shift
-WARNING: shift/reduce conflict for STRING_TYPE in state 174 resolved as shift
-WARNING: shift/reduce conflict for ID in state 174 resolved as shift
