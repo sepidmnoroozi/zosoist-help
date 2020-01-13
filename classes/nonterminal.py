@@ -14,6 +14,8 @@ class Nonterminal:
         self.quad = 100000000000
         self.next_list = []
         self.address = 0
+        self.pure_code_list = []
+        self.list = []
 
 
 

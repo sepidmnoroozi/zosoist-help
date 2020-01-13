@@ -5,15 +5,17 @@ class Program{
 		grade = 12;
 		if(grade > 16){
 			_rating = 4;
-			a = 7;
-			b = 6;
+			a = 0;
+			b = 1;
 		}
 		elseif(grade > 14){
-		    a = 9;
-		    b = 8;
+		    a = 2;
+		    b = 3;
 		}
-		else{
-		    a = 9;
+		elseif(grade > 12){
+		    a = 4;
+		    b = 5;
 		}
+
     }
 }

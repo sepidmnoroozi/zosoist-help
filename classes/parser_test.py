@@ -380,25 +380,149 @@ class Parser:
 
     def p_if_3(self, p):
         """if : IF LP exp RP block elseifs %prec prec2"""
-        #%prec IF3
-        print("""if -> IF LP exp RP block elseifs""")
+        print("hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii")
+        p[0] = Nonterminal()
+        p[0].list = []
+        p[3].list = []
+        p[3].list.append(p[3].true_list)
+        p[3].list.append(p[3].false_list)
+
+        num_of_elseifs = len(p[6].list)
+
+        p[0].list = p[6].list
+        p[0].list.insert(0, p[3].list)
+        # print(p[0].list)
+        p[0].code_list = p[6].code
+        p[0].code_list.insert(0, p[5].code)
+        # print(p[0].code)
+
+        next_code_label = str(self.get_num_of_last_label(p[0].code_list[-1]) + 1)
+        code = "L" + next_code_label + ": "
+        self.code_list.append(code)
+
+        if_list = p[0].list[0]
+        self.backpatch(if_list[0], self.get_start(p[0].code_list[0]))
+        self.backpatch(if_list[1], "L" + str(p[0].list[1][0][0]))
+
+        for i in range(1, num_of_elseifs + 1):
+            c = p[0].code_list[i]
+            c_list = c.split(";")
+            code_in_code_list = c_list[-2] + ";"
+            index = self.code_list.index(code_in_code_list)
+            new_code_in_code_list = code_in_code_list + "goto" + "L" + next_code_label
+            self.code_list.insert(index, new_code_in_code_list)
+            self.code_list.pop(index + 1)
+            c = c + "goto " + "L" + next_code_label
+            p[0].code_list[i] = c
+
+        for i in range(1, num_of_elseifs + 1):
+            list = p[0].list[i]
+            self.backpatch(list[0], self.get_start(p[0].code_list[i]))
+            if i == num_of_elseifs:
+                self.backpatch(list[1], self.get_start(p[0].code_list[-1]))
+            else:
+                self.backpatch(list[1], code)
+
+        print(self.code_list)
+        print("hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii")
 
     def p_if_4(self, p):
         """if : IF LP exp RP block elseifs ELSE block %prec prec1"""
-        #%prec IF4
         print("""if -> IF LP exp RP block elseifs ELSE block""")
+        print("heyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy")
+        p[0] = Nonterminal()
+        p[0].list = []
+        p[3].list = []
+        p[3].list.append(p[3].true_list)
+        p[3].list.append(p[3].false_list)
+
+        num_of_elseifs = len(p[6].list)
+
+        p[0].list = p[6].list
+        p[0].list.insert(0, p[3].list)
+        # print(p[0].list)
+        p[0].code_list = p[6].code
+        p[0].code_list.insert(0, p[5].code)
+        p[0].code_list.insert(len(p[0].code_list), p[8].code)
+        # print(p[0].code)
+
+        next_code_label = str(self.get_num_of_last_label(p[0].code_list[-1])+1)
+        code = "L"+next_code_label+": "
+        self.code_list.append(code)
+
+        if_list = p[0].list[0]
+        self.backpatch(if_list[0], self.get_start(p[0].code_list[0]))
+        self.backpatch(if_list[1], "L" + str(p[0].list[1][0][0]))
+
+        for i in range(1, num_of_elseifs+1):
+            c = p[0].code_list[i]
+            c_list = c.split(";")
+            code_in_code_list = c_list[-2]+";"
+            index = self.code_list.index(code_in_code_list)
+            new_code_in_code_list = code_in_code_list + "goto" + "L"+next_code_label
+            self.code_list.insert(index, new_code_in_code_list)
+            self.code_list.pop(index+1)
+            c = c + "goto " + "L"+next_code_label
+            p[0].code_list[i] = c
+
+        for i in range(1, num_of_elseifs + 1):
+            list = p[0].list[i]
+            self.backpatch(list[0], self.get_start(p[0].code_list[i]))
+            if i == num_of_elseifs:
+                self.backpatch(list[1], self.get_start(p[0].code_list[-1]))
+            else:
+                self.backpatch(list[1], "L" + str(p[0].list[i + 1][0][0]))
+
+        print(self.code_list)
 
     def p_elseifs_1(self, p):
         """elseifs : elseifs elseif"""
         print("""elseifs -> elseifs elseif""")
+        p[0] = Nonterminal()
+        p[0].code = p[1].code
+        p[0].code.append(p[2].code)
+        p[0].list = p[1].list
+        p[0].list.append(p[2].list)
+        # print(p[0].list)
+        # print(p[0].code)
+
+
 
     def p_elseifs_2(self, p):
         """elseifs : elseif"""
         print("""elseifs -> elseif""")
+        p[0] = Nonterminal()
+        p[0].code = []
+        p[0].code.append(p[1].code)
+        p[0].list = []
+        p[0].list.append(p[1].list)
+        # print("))))))))))))))))))))))))))))))))))))))))))))))")
+        # print(p[0].list)
+        # print(p[0].code)
+
+
 
     def p_elseif(self, p):
         """elseif : ELSEIF LP exp RP block %prec ELSEIF"""
         print("""elseif -> ELSEIF LP exp RP block""")
+        # print("true_list")
+        # print(p[3].true_list)
+        # print("false_list")
+        # print(p[3].false_list)
+        # print("code block")
+        # print(p[5].code)
+
+        p[0] = Nonterminal()
+        p[0].code = p[5].code
+        p[0].list = []
+        p[0].list.append(p[3].true_list)
+        p[0].list.append(p[3].false_list)
+        # print("****************************")
+        # print(p[0].list)
+
+
+        # p[0].pure_code_list
+
 
 
 
@@ -713,7 +837,14 @@ class Parser:
             # print(code)
             self.code_list[index] = new_code
 
-
+    def get_start(self, s):
+        s_list = s.split(":")
+        return s_list[0]
+    def get_num_of_last_label(self, s):
+        s_list = s.split(";")
+        s_list = s_list[-2].split(':')
+        num = int(s_list[0].replace("L",""))
+        return num
 
     def build(self, **kwargs):
         """build the parser"""
