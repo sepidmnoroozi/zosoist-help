@@ -126,6 +126,8 @@ class Parser:
         """var_list_item : ID"""
         p[0] = Nonterminal()
         p[0].value = p[1]
+        p[0].code = "double " + p[0].value + ";"
+        self.code_list.append(p[0].code)
         print("""var_list_item -> ID""")
 
     ############2
@@ -185,7 +187,7 @@ class Parser:
         print("""statements_list -> statements_list statement""")
         p[0] = Nonterminal()
         p[0].code = p[1].code + p[2].code
-        # print(p[0].code)
+        print(p[0].code)
 
     def p_statements_list_e(self, p):
         """statements_list : """
@@ -211,6 +213,7 @@ class Parser:
 
     def p_statement_2(self, p):
         """statement : print"""
+        p[0] = p[1]
         print("""statement -> print""")
 
     def p_statement_3(self, p):
@@ -252,15 +255,19 @@ class Parser:
         p[0] = Nonterminal()
 
         if p[3].place != "":
+            print(p[3].code)
             p[0].code = "L" + str(len(self.code_list)) + ": " + p[1].value + "=" + p[3].place + ";"
             p[0].address = len(self.code_list)
             self.code_list.append(p[0].code)
+            p[0].code = p[3].code + p[0].code
             print(self.code_list)
+            self.produce_output()
         elif p[3].value != "":
             p[0].code = "L" + str(len(self.code_list)) + ": " + p[1].value + "=" + p[3].value + ";"
             p[0].address = len(self.code_list)
             self.code_list.append(p[0].code)
             print(self.code_list)
+            self.produce_output()
         else:
             true_label = len(self.code_list)
             false_label = true_label + 2
@@ -287,6 +294,7 @@ class Parser:
                         self.code_list[index] = new_code
 
             print(self.code_list)
+            self.produce_output()
 
     def p_lvalue_1(self, p):
         """lvalue : lvalue1 %prec LVALI"""
@@ -309,7 +317,11 @@ class Parser:
 
     def p_print(self, p):
         """print : PRINT LP STRING RP SEMICOLON"""
+        p[0] = Nonterminal()
         print("""print -> PRINT LP STRING RP SEMICOLON""")
+        p[0].code = p[1] + p[2] + p[3] + p[4] + p[5]
+        self.code_list.append((p[0].code))
+        self.produce_output()
 
     def p_statement_var_dec(self, p):
         """statement_var_dec : return_type var_list SEMICOLON"""
@@ -351,6 +363,7 @@ class Parser:
         self.code_list.append(code)
 
         print(self.code_list)
+        self.produce_output()
 
 
     def p_if_2(self, p):
@@ -377,6 +390,7 @@ class Parser:
         self.backpatch(p[3].false_list, token_list[0])
 
         print(self.code_list)
+        self.produce_output()
 
     def p_if_3(self, p):
         """if : IF LP exp RP block elseifs %prec prec2"""
@@ -409,10 +423,10 @@ class Parser:
             c_list = c.split(";")
             code_in_code_list = c_list[-2] + ";"
             index = self.code_list.index(code_in_code_list)
-            new_code_in_code_list = code_in_code_list + "goto" + "L" + next_code_label
+            new_code_in_code_list = code_in_code_list + "goto " + "L" + next_code_label + ";"
             self.code_list.insert(index, new_code_in_code_list)
             self.code_list.pop(index + 1)
-            c = c + "goto " + "L" + next_code_label
+            c = c + "goto " + "L" + next_code_label + ";"
             p[0].code_list[i] = c
 
         for i in range(1, num_of_elseifs + 1):
@@ -424,6 +438,7 @@ class Parser:
                 self.backpatch(list[1], code)
 
         print(self.code_list)
+        self.produce_output()
         print("hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii")
 
     def p_if_4(self, p):
@@ -459,10 +474,10 @@ class Parser:
             c_list = c.split(";")
             code_in_code_list = c_list[-2]+";"
             index = self.code_list.index(code_in_code_list)
-            new_code_in_code_list = code_in_code_list + "goto" + "L"+next_code_label
+            new_code_in_code_list = code_in_code_list + "goto " + "L" + next_code_label + ";"
             self.code_list.insert(index, new_code_in_code_list)
             self.code_list.pop(index+1)
-            c = c + "goto " + "L"+next_code_label
+            c = c + "goto " + "L" + next_code_label + ";"
             p[0].code_list[i] = c
 
         for i in range(1, num_of_elseifs + 1):
@@ -474,6 +489,7 @@ class Parser:
                 self.backpatch(list[1], "L" + str(p[0].list[i + 1][0][0]))
 
         print(self.code_list)
+        self.produce_output()
 
     def p_elseifs_1(self, p):
         """elseifs : elseifs elseif"""
@@ -533,6 +549,31 @@ class Parser:
     def p_while(self, p):
         """while : WHILE LP exp RP block"""
         print("""while -> WHILE LP exp RP block""")
+        print("*************************************************")
+        p[0] = Nonterminal()
+        print(p[3].true_list)
+        print(p[3].false_list)
+        print(p[5].code)
+        self.backpatch(p[3].true_list, self.get_start(p[5].code))
+        next_code_label = str(self.get_num_of_last_label(p[5].code) + 1)
+        code = "L" + next_code_label + ": "
+        self.code_list.append(code)
+        self.backpatch(p[3].false_list, "L" + next_code_label)
+
+
+        c_list = p[5].code.split(";")
+        code_in_code_list = c_list[-2] + ";"
+        index = self.code_list.index(code_in_code_list)
+        new_code_in_code_list = code_in_code_list + "goto " + "L" + str(p[3].true_list[0]) + ";"
+        self.code_list.insert(index, new_code_in_code_list)
+        self.code_list.pop(index + 1)
+        p[5].code = p[5].code + "goto " + "L" + str(p[3].true_list[0]) + ";"
+
+
+
+        print(self.code_list)
+        self.produce_output()
+        print("*************************************************")
 
     def p_return(self, p):
         """return : RETURN exp SEMICOLON"""
@@ -676,6 +717,7 @@ class Parser:
 
         p[0].code = self.code_list
         print(self.code_list)
+        self.produce_output()
 
     def p_logical_operation_1(self, p):
         """logical_operation : exp OR exp"""
@@ -688,6 +730,7 @@ class Parser:
 
         p[0].code = self.code_list
         print(self.code_list)
+        self.produce_output()
 
     #######5
     def p_comparison_operation_1(self, p):
@@ -746,6 +789,7 @@ class Parser:
 
         self.code_list.append(p[0].code)
         print(self.code_list)
+        self.produce_output()
 
     def p_unary_operation_3(self, p):
         """unary_operation : BITWISE_NOT exp"""
@@ -845,6 +889,20 @@ class Parser:
         s_list = s_list[-2].split(':')
         num = int(s_list[0].replace("L",""))
         return num
+
+    def produce_output(self):
+        file = open("final_result.c", "w")
+        s = "#include <stdio.h>"+"\n"
+        s += "int main(){"+"\n"
+        # if self.t_counter > -1 :
+        #     s += "double "
+        #     for i in range(0, self.t_counter+1):
+
+
+        s += "\n".join(self.code_list)
+        s += "\n" + "}"
+        file.write(s)
+        file.close()
 
     def build(self, **kwargs):
         """build the parser"""

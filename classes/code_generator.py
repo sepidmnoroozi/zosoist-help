@@ -5,9 +5,11 @@ class CodeGenerator:
         pass
 
     def generate_arithmetic_code(self, p, tmp, code_list):
+        print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
         p[0] = Nonterminal()
         p[0].place = tmp
-        if len(p) == 4 :
+        if len(p) == 4:
+            print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^4")
             arg1 = ""
             arg2 = ""
 
@@ -15,16 +17,19 @@ class CodeGenerator:
                 arg1 = p[1].value
             else:
                 arg1 = p[1].place
+
             if p[3].place == "":
                 arg2 = p[3].value
             else:
                 arg2 = p[3].place
 
-            p[0].code = str(len(code_list)) + ": " + p[0].place + "=" + arg1 + p[2] + arg2 + ";"
+            p[0].code = "L" + str(len(code_list)) + ": " + p[0].place + "=" + arg1 + p[2] + arg2 + ";"
+            print(p[0].code)
             code_list.append(p[0].code)
             print(code_list)
 
         elif len(p) == 3:
+            print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^3")
             arg1 = ""
             arg2 = ""
 
@@ -33,7 +38,8 @@ class CodeGenerator:
             else:
                 arg1 = p[2].place
 
-            p[0].code = str(len(code_list)) + ": " + p[0].place + "=" + p[1] + arg1 + ";"
+            p[0].code = "L" + str(len(code_list)) + ": " + p[0].place + "=" + p[1] + arg1 + ";"
+            print(p[0].code)
             code_list.append(p[0].code)
             print(code_list)
 

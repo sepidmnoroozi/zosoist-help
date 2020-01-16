@@ -1,21 +1,21 @@
 class Program{
-    static void _main(){
-        real grade;
+	static void _main(){
+		real grade;
+		int _rating;
 
 		grade = 12;
+
 		if(grade > 16){
 			_rating = 4;
-			a = 0;
-			b = 1;
+			_rating = _rating + 1;
 		}
-		elseif(grade > 14){
-		    a = 2;
-		    b = 3;
-		}
-		elseif(grade > 12){
-		    a = 4;
-		    b = 5;
-		}
+		elseif(grade > 14)
+			_rating = 3;
+		elseif(grade > 12)
+			_rating = 2;
+		else
+			_rating = 1;
 
-    }
+		print("{_rating}");
+	}
 }
